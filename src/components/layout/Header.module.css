@@ -1,0 +1,27 @@
+.header__link {
+  font-weight: 600;
+  position: relative;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.header__link:hover::before {
+  visibility: visible;
+  transform: scale(1);
+  opacity: 1;
+  transition: all 350ms ease-in-out;
+}
+
+.header__link::before {
+  background-color: #1a202c;
+  bottom: -5px;
+  content: '';
+  height: 4px;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  transform: scaleX(0);
+  transform-origin: left;
+  visibility: hidden;
+  width: 100%;
+}
