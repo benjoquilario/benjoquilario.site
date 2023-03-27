@@ -79,7 +79,7 @@ export const projects = [
   {
     name: 'AnimeZia',
     description:
-      'AnimeZia is a popular anime streaming services where everyone can search, browse and watch anime without ads and no vpn required',
+      'AnimeZia is a popular anime streaming services where everyone can search, browse and watch anime without ads and no vpn required.',
     image: [
       '/animezia.png',
       '/animezia-2.png',

@@ -7,9 +7,9 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Benjo Quilario | Fullstack Developer</title>
+        <title>Benjo Quilario | Frontend Developer Developer</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="title" content="Benjo Quilario - Web Developer" />
+        <meta name="title" content="Benjo Quilario | Frontend Developer" />
         <meta
           name="description"
           content="Hi there!, I'm Benjo Quilario a self-taught passionate frontend developer focused on building fast, easy to-use and accessible websites"
@@ -18,7 +18,7 @@ export default function Home() {
         <meta property="og:type" content="website" />
         <meta
           property="og:title"
-          content="Benjo Quilario | Fullstack Developer"
+          content="Benjo Quilario | Frontend Developer"
         />
         <meta
           property="og:image"
@@ -37,7 +37,7 @@ export default function Home() {
         />
         <meta
           name="twitter:title"
-          content="Benjo Quilario | Fullstack Developer"
+          content="Benjo Quilario | Frontend Developer"
         />
         <meta
           name="twitter:description"
