@@ -1,6 +1,6 @@
 import { projects } from '@/lib/config';
 import React from 'react';
-import Project from '../shared/Project';
+import Project from '../shared/project';
 
 const Projects = () => {
   return (

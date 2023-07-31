@@ -1,10 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
-import About from '@/components/section/About';
-import Projects from '@/components/section/Projects';
-import Hero from '@/components/shared/Hero';
-import Tech from '@/components/techstack/Tech';
-import Contact from '@/components/section/Contact';
-import SkillSetModal from '../techstack/SkillSetModal';
+import About from '@/components/section/about';
+import Projects from '@/components/section/project';
+import Hero from '@/components/shared/hero';
+import Tech from '@/components/techstack/tech';
+import Contact from '@/components/section/contact';
+import SkillSetModal from '@/components/techstack/skill-set-modal';
 import useClickOutside from '@/lib/hooks/useClickOutside';
 
 const Main = () => {

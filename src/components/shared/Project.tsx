@@ -9,7 +9,7 @@ import classNames from 'classnames';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import Arrow from './Arrow';
+import Arrow from './arrow';
 
 type ProjectProps = {
   project: ProjectType;

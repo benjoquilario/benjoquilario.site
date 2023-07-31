@@ -1,9 +1,11 @@
 import React from 'react';
-import Backdrop from '../shared/Backdrop';
+import Backdrop from '@/components/shared/backdrop';
 import { IoMdClose } from 'react-icons/io';
-import SkillSet from '../shared/SkillSet';
+import SkillSet from '@/components/shared/skill-set';
 import { skillset } from '@/lib/config';
 import classNames from 'classnames';
+import { Toggle } from '../ui/toggle';
+import { X } from 'lucide-react';
 
 type ModalArsenalProps = {
   className?: string;
@@ -23,26 +25,20 @@ const SkillSetModal = React.forwardRef<HTMLDivElement, ModalArsenalProps>(
       >
         <div
           className={classNames(
-            'flex flex-col bg-white h-[500px] mx-2 w-[450px] rounded-md py-4 pl-4 overflow-hidden transition',
+            'flex flex-col bg-background h-[500px] mx-2 w-[450px] rounded-md py-4 pl-4 overflow-hidden transition',
             props.isOpen
               ? 'visible opacity-100 scale-y-100'
               : 'invisible opacity-0 scale-y-75'
           )}
           ref={ref}
         >
-          <div className="text-dark flex justify-between items-center pr-4">
-            <h4 className="text-base md:text-lg font-semibold">
+          <div className="flex justify-between items-center">
+            <h4 className="font-heading leading-tight scroll-m-20 text-base md:text-lg font-semibold">
               Full Skill Set List
             </h4>
-            <button
-              className={classNames(
-                'text-dark p-1 rounded hover:bg-gray-200 transition focus:outline-none focus:outline-primary focus:outline-offset-1',
-                'active:outline-primary active:ring-1 active:text-[#7a828a] active:bg-gray-300'
-              )}
-              onClick={() => props.setIsOpen(!props.isOpen)}
-            >
-              <IoMdClose className="h-6 w-6" />
-            </button>
+            <Toggle onClick={() => props.setIsOpen(!props.isOpen)}>
+              <X />
+            </Toggle>
           </div>
           <div className="my-5 h-full overflow-auto">
             <SkillSet title="Frontend Centric" skillSets={skillset.frontend} />

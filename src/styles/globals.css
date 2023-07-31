@@ -3,74 +3,58 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    font-family: 'Poppins', sans-serif;
-    scroll-behavior: smooth;
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --ring: 240 5% 64.9%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 85.7% 97.3%;
+    --ring: 240 3.7% 15.9%;
   }
 }
 
-.slick-arrow {
-  background-color: rgba(20, 20, 20, 0.5) !important;
-  width: 40px !important;
-  height: 50% !important;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 350ms ease-in;
-  z-index: 99;
-}
-
-/* width */
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #fff;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #1a202c;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #303641;
-}
-
-@media screen and (max-width: 553px) {
-  .slick-arrow {
-    display: none !important;
+@layer base {
+  * {
+    @apply border-border;
   }
-}
-
-.slick-arrow:hover {
-  background-color: rgba(20, 20, 20, 0.7);
-}
-
-.slick-slider:hover .slick-arrow {
-  opacity: 1;
-  visibility: visible;
-  transition: all 350ms ease-in;
-}
-
-.slick-next::before,
-.slick-prev::before {
-  content: '' !important;
-}
-
-.slick-prev {
-  /* top: 0px; */
-  left: 0px !important;
-  border-top-right-radius: 54px;
-  border-bottom-right-radius: 54px;
-}
-
-.slick-next {
-  right: 0px !important;
-  border-top-left-radius: 54px;
-  border-bottom-left-radius: 54px;
-  /* top: 0px; */
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+  }
 }
