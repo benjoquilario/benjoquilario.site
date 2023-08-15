@@ -1,35 +1,35 @@
-import { TfiTwitter } from 'react-icons/tfi';
-import { FaFacebookF } from 'react-icons/fa';
-import { TbBrandGithub } from 'react-icons/tb';
-import { AiOutlineLinkedin } from 'react-icons/ai';
-import { CgMail } from 'react-icons/cg';
+import { TfiTwitter } from "react-icons/tfi"
+import { FaFacebookF } from "react-icons/fa"
+import { TbBrandGithub } from "react-icons/tb"
+import { AiOutlineLinkedin } from "react-icons/ai"
+import { CgMail } from "react-icons/cg"
 
 const ICONLIST = [
   {
-    title: 'Twitter',
+    title: "Twitter",
     icon: TfiTwitter,
-    href: 'https://twitter.com/iam_benjo',
+    href: "https://twitter.com/iam_benjo",
   },
   {
-    title: 'Facebook',
+    title: "Facebook",
     icon: FaFacebookF,
-    href: 'https://www.facebook.com/Benjo.Add07/',
+    href: "https://www.facebook.com/Benjo.Add07/",
   },
   {
-    title: 'Github',
+    title: "Github",
     icon: TbBrandGithub,
-    href: 'https://github.com/benjoquilario',
+    href: "https://github.com/benjoquilario",
   },
   {
-    title: 'LinkedIn',
+    title: "LinkedIn",
     icon: AiOutlineLinkedin,
-    href: 'https://www.linkedin.com/in/benjo-quilario-415a351bb/',
+    href: "https://www.linkedin.com/in/benjo-quilario-415a351bb/",
   },
   {
-    title: 'Gmail',
+    title: "Gmail",
     icon: CgMail,
-    href: 'mailto:benjoquilario@gmail.com',
+    href: "mailto:benjoquilario@gmail.com",
   },
-];
+]
 
-export default ICONLIST;
+export default ICONLIST

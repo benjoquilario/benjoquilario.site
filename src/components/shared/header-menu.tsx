@@ -1,27 +1,26 @@
-import React from 'react';
-import { navList as lists } from '../layout/header';
-import { cn } from '@/lib/utils';
-import Link from 'next/link';
+import React from "react"
+import { navList as lists } from "../layout/header"
+import { cn } from "@/lib/utils"
 
 type HeaderMenuProps = {
-  className: string;
-};
+  className: string
+}
 
 const HeaderMenu: React.FC<HeaderMenuProps> = ({ className }) => {
   return (
     <div
       className={cn(
-        'fixed w-full z-50 left-0 transition-all bottom-0 bg-transparent',
+        "fixed bottom-0 left-0 z-50 w-full bg-transparent transition-all",
         className
       )}
     >
-      <div className="bg-background shadow-md px-4 pt-7 pb-12">
+      <div className="bg-background px-4 pb-12 pt-7 shadow-md">
         <ul className="text-left">
-          {lists.map(list => (
+          {lists.map((list) => (
             <li key={list.href} className="mb-2">
               <a
                 href={list.href}
-                className="relative text-muted-foreground/60 transition-colors hover:text-muted-foreground/80 text-sm"
+                className="relative text-sm text-muted-foreground/60 transition-colors hover:text-muted-foreground/80"
               >
                 {list.title}
               </a>
@@ -30,7 +29,7 @@ const HeaderMenu: React.FC<HeaderMenuProps> = ({ className }) => {
         </ul>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default HeaderMenu;
+export default HeaderMenu

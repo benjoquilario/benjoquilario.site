@@ -1,69 +1,69 @@
-'use client';
-import React, { useEffect, useState } from 'react';
-import HeaderMenu from '@/components/shared/header-menu';
-import { Menu } from 'lucide-react';
-import { cn } from '@/lib/utils';
-import ThemeToggle from '@/components/theme-toggle';
-import { Toggle } from '@/components/ui/toggle';
-import Link from 'next/link';
+"use client"
+import React, { useEffect, useState } from "react"
+import HeaderMenu from "@/components/shared/header-menu"
+import { Menu } from "lucide-react"
+import { cn } from "@/lib/utils"
+import ThemeToggle from "@/components/theme-toggle"
+import { Toggle } from "@/components/ui/toggle"
+import Link from "next/link"
 
 export const navList = [
   {
-    href: '/about',
-    title: 'About',
+    href: "/about",
+    title: "About",
   },
   {
-    href: '/blog',
-    title: 'Blog',
+    href: "/blog",
+    title: "Blog",
   },
   {
-    href: '#contact',
-    title: 'Contact',
+    href: "#contact",
+    title: "Contact",
   },
-];
+]
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
   useEffect(() => {
-    isOpen && (document.body.style.overflow = 'hidden');
+    isOpen && (document.body.style.overflow = "hidden")
 
     const focusTrap = (event: KeyboardEvent) => {
-      if (event.key == 'Escape') {
-        setIsOpen(false);
+      if (event.key == "Escape") {
+        setIsOpen(false)
       }
 
-      if (event.key !== 'Tab') return;
-    };
+      if (event.key !== "Tab") return
+    }
 
-    document.addEventListener('keydown', focusTrap);
+    document.addEventListener("keydown", focusTrap)
 
     return () => {
-      document.body.style.overflow = 'unset';
-      document.removeEventListener('keydown', focusTrap);
-    };
-  }, [isOpen]);
+      document.body.style.overflow = "unset"
+      document.removeEventListener("keydown", focusTrap)
+    }
+  }, [isOpen])
 
   return (
-    <header className="flex justify-center items-center w-full pb-6 mb-6">
-      <div className="max-w-5xl mx-0 flex justify-between items-center w-full">
+    <header className="mb-6 flex w-full items-center justify-center pb-6">
+      <div className="mx-0 flex w-full max-w-5xl items-center justify-between">
         <Link
           href="/"
-          className="z-10 text-3xl md:text-5xl font-logo font-extrabold"
+          className="z-10 font-logo text-3xl font-extrabold md:text-5xl"
           aria-label="Benjo Quilario - BMQ"
         >
           B.
         </Link>
-        <div className="flex justify-between items-center gap-3 h-12">
+        <div className="flex h-12 items-center justify-between gap-3">
           <nav aria-label="primary">
             {/* <button className="md:hidden absolute top-7 right-6 flex flex-col justify-center items-center bg-transition z-[999]"></button> */}
-            <div className="hidden md:block relative">
+            <div className="relative hidden md:block">
               <ul className="flex gap-3">
-                {navList.map(list => (
+                {navList.map((list) => (
                   <li key={list.href}>
                     <Link
                       href={list.href}
-                      className="text-muted-foreground/60 transition-colors hover:text-muted-foreground/80 text-sm"
+                      className="text-sm text-muted-foreground/60 transition-colors hover:text-muted-foreground/80"
                     >
                       {list.title}
                     </Link>
@@ -75,8 +75,8 @@ const Header = () => {
           <HeaderMenu
             className={cn(
               isOpen
-                ? 'opacity-100 top-[64px] right-0 visible'
-                : '-top-4 opacity-0 -right-[1000px] invisible'
+                ? "visible right-0 top-[64px] opacity-100"
+                : "invisible -right-[1000px] -top-4 opacity-0"
             )}
           />
           <div className="flex gap-2">
@@ -84,7 +84,7 @@ const Header = () => {
             <Toggle
               onClick={() => setIsOpen(!isOpen)}
               variant="outline"
-              className="md:hidden block"
+              className="block md:hidden"
             >
               <Menu className="h-[1.5rem] w-[1.3rem]" />
             </Toggle>
@@ -92,7 +92,7 @@ const Header = () => {
         </div>
       </div>
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

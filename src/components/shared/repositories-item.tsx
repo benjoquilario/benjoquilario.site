@@ -1,54 +1,54 @@
-import Link from 'next/link';
-import { Book, GitFork, Star, GithubIcon, ExternalLink } from 'lucide-react';
-import React from 'react';
-import { Badge } from '@/components/ui/badge';
-import { TypographyH3 } from '../typography';
+import Link from "next/link"
+import { Book, GitFork, Star, GithubIcon, ExternalLink } from "lucide-react"
+import React from "react"
+import { Badge } from "@/components/ui/badge"
+import { TypographyH3 } from "../typography"
 
 async function getRepos(repo: string) {
   const res = await fetch(
     `https://api.github.com/repos/benjoquilario/${repo}`,
     {
       headers: {
-        Accept: 'application/vnd.github+json',
+        Accept: "application/vnd.github+json",
       },
       next: {
         revalidate: 60,
       },
     }
-  );
+  )
 
   if (!res.ok) {
-    throw new Error('Failed to fetch data');
+    throw new Error("Failed to fetch data")
   }
 
-  return res.json();
+  return res.json()
 }
 
 export default async function RepositoriesItem({
   repoName,
 }: {
-  repoName: string;
+  repoName: string
 }) {
-  const repositories = await getRepos(repoName);
+  const repositories = await getRepos(repoName)
 
   return (
     <li className="relative -mx-4 md:-mx-0">
       <Link
         href={repositories.html_url}
-        className="flex px-4 py-4 hover:bg-accent transition-colors rounded-sm"
+        className="flex rounded-sm px-4 py-4 transition-colors hover:bg-accent"
         target="_blank"
       >
-        <article className="flex gap-2 flex-col rounded-sm">
-          <div className="flex justify-between items-center">
+        <article className="flex flex-col gap-2 rounded-sm">
+          <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Book className="h-6 w-6 shrink-0" aria-hidden="true" />
-              <TypographyH3 className="lowercase text-base">
+              <TypographyH3 className="text-base lowercase">
                 {repositories.name}
               </TypographyH3>
             </div>
           </div>
 
-          <p className="text-muted-foreground text-sm line-clamp-2">
+          <p className="line-clamp-2 text-sm text-muted-foreground">
             {repositories.description}
           </p>
           <div className="flex gap-1">
@@ -58,7 +58,7 @@ export default async function RepositoriesItem({
               </Badge>
             ))}
           </div>
-          <div className="mt-auto flex items-center gap-4 pt-1 text-xs font-1 text-2">
+          <div className="font-1 text-2 mt-auto flex items-center gap-4 pt-1 text-xs">
             <div className="flex items-center gap-2">
               <div className="h-3 w-3 shrink-0 rounded-full bg-current"></div>
               <span>{repositories.language}</span>
@@ -75,5 +75,5 @@ export default async function RepositoriesItem({
         </article>
       </Link>
     </li>
-  );
+  )
 }

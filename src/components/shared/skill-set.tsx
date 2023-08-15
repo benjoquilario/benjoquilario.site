@@ -1,27 +1,27 @@
-import { SkillSet } from '@/lib/types';
-import React from 'react';
+import { SkillSet } from "@/lib/types"
+import React from "react"
 
 type SkillSetProps = {
-  title: string;
-  skillSets: SkillSet[];
-};
+  title: string
+  skillSets: SkillSet[]
+}
 
 const SkillSet: React.FC<SkillSetProps> = ({ title, skillSets }) => {
   return (
     <div className="">
-      <div className="text-sm md:text-[15px] font-semibold mb-2">{title}</div>
-      <div className="border-t border-dark grid grid-cols-2 w-full py-4 gap-2">
+      <div className="mb-2 text-sm font-semibold md:text-[15px]">{title}</div>
+      <div className="border-dark grid w-full grid-cols-2 gap-2 border-t py-4">
         {skillSets.map((skill, index) => (
-          <div className="text-primary flex items-center" key={index}>
+          <div className="flex items-center text-primary" key={index}>
             <skill.icon className="h-6 w-6" />
-            <span className="text-muted-foreground font-light ml-2 text-sm">
+            <span className="ml-2 text-sm font-light text-muted-foreground">
               {skill.name}
             </span>
           </div>
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SkillSet;
+export default SkillSet

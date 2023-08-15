@@ -1,22 +1,22 @@
-import RepositoriesItem from '@/components/shared/repositories-item';
-import { REPOS } from '@/config/config';
-import React from 'react';
-import { TypographyH2 } from '../typography';
+import RepositoriesItem from "@/components/shared/repositories-item"
+import { REPOS } from "@/config/config"
+import React from "react"
+import { TypographyH2 } from "../typography"
 
 const Repositories = () => {
   return (
-    <section className="flex flex-col items-start justify-start mb-12">
+    <section className="mb-12 flex flex-col items-start justify-start">
       <TypographyH2>
         <span className="text-4xl">F</span>
         eatured <span className="text-4xl">R</span>epositories
       </TypographyH2>
-      <ul className="grid grid-cols-1 md:grid-cols-2 gap-2.5 w-full mt-6 mx-0 md:-mx-4">
-        {REPOS.map(repo => (
+      <ul className="mx-0 mt-6 grid w-full grid-cols-1 gap-2.5 md:-mx-4 md:grid-cols-2">
+        {REPOS.map((repo) => (
           <RepositoriesItem key={repo} repoName={repo} />
         ))}
       </ul>
     </section>
-  );
-};
+  )
+}
 
-export default Repositories;
+export default Repositories

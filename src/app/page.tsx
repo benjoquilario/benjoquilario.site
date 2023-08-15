@@ -1,8 +1,8 @@
-import Hero from '@/components/section/hero';
-import Articles from '@/components/section/articles';
-import Repositories from '@/components/section/repositories';
-import Link from 'next/link';
-import React from 'react';
+import Hero from "@/components/section/hero"
+import Articles from "@/components/section/articles"
+import Repositories from "@/components/section/repositories"
+import Link from "next/link"
+import React from "react"
 
 export default function Home() {
   return (
@@ -11,5 +11,5 @@ export default function Home() {
       <Repositories />
       <Articles />
     </React.Fragment>
-  );
+  )
 }

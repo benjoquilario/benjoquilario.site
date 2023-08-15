@@ -26,265 +26,265 @@ import {
   SiGit,
   SiExpress,
   SiHeroku,
-} from 'react-icons/si';
+} from "react-icons/si"
 
 export const projects = [
   {
-    name: 'Insider',
+    name: "Insider",
     description:
-      'A Fullstack social media application intended to make a community, friends, and make the world more open and connected.',
-    image: ['/insider.png', '/insider-2.png', '/insider-3.png'],
-    url: 'https://t3-insider.vercel.app/',
-    sources_code: 'https://github.com/benjoquilario/next-insider',
+      "A Fullstack social media application intended to make a community, friends, and make the world more open and connected.",
+    image: ["/insider.png", "/insider-2.png", "/insider-3.png"],
+    url: "https://t3-insider.vercel.app/",
+    sources_code: "https://github.com/benjoquilario/next-insider",
     tech: [
       {
-        name: 'Nextjs',
+        name: "Nextjs",
         icon: SiNextdotjs,
       },
       {
-        name: 'Trpc',
+        name: "Trpc",
         icon: SiTrpc,
       },
       {
-        name: 'TypeScript',
+        name: "TypeScript",
         icon: SiTypescript,
       },
       {
-        name: 'Prisma',
+        name: "Prisma",
         icon: SiPrisma,
       },
       {
-        name: 'MongoDB',
+        name: "MongoDB",
         icon: SiMongodb,
       },
       {
-        name: 'React',
+        name: "React",
         icon: SiReact,
       },
       {
-        name: 'TailwindCSS',
+        name: "TailwindCSS",
         icon: SiTailwindcss,
       },
       {
-        name: 'React-hook-form',
+        name: "React-hook-form",
         icon: SiReacthookform,
       },
       {
-        name: 'Framer Motion',
+        name: "Framer Motion",
         icon: SiFramer,
       },
     ],
-    status: 'public',
+    status: "public",
   },
   {
-    name: 'AnimeZia',
+    name: "AnimeZia",
     description:
-      'AnimeZia is a popular anime streaming services where everyone can search, browse and watch anime without ads and no vpn required.',
+      "AnimeZia is a popular anime streaming services where everyone can search, browse and watch anime without ads and no vpn required.",
     image: [
-      '/animezia.png',
-      '/animezia-2.png',
-      '/animezia-4.png',
-      '/animezia-3.png',
+      "/animezia.png",
+      "/animezia-2.png",
+      "/animezia-4.png",
+      "/animezia-3.png",
     ],
-    url: 'https://animezia.com/',
-    sources_code: 'https://github.com/benjoquilario/animezia-hi',
+    url: "https://animezia.com/",
+    sources_code: "https://github.com/benjoquilario/animezia-hi",
     tech: [
       {
-        name: 'TypeScript',
+        name: "TypeScript",
         icon: SiTypescript,
       },
       {
-        name: 'Nextjs',
+        name: "Nextjs",
         icon: SiNextdotjs,
       },
       {
-        name: 'React',
+        name: "React",
         icon: SiReact,
       },
       {
-        name: 'TailwindCSS',
+        name: "TailwindCSS",
         icon: SiTailwindcss,
       },
       {
-        name: 'Redux Toolkit',
+        name: "Redux Toolkit",
         icon: SiRedux,
       },
       {
-        name: 'Framer Motion',
+        name: "Framer Motion",
         icon: SiFramer,
       },
       {
-        name: 'Heroku',
+        name: "Heroku",
         icon: SiHeroku,
       },
     ],
-    status: 'private',
+    status: "private",
   },
   {
-    name: 'D-Invoices',
+    name: "D-Invoices",
     description:
-      'D-Invoices is used to manage invoices and allows the user to create, read, update, filter by status and delete invoices.',
-    image: ['/invoices.png', '/invoices-2.png', '/invoices-3.png'],
-    url: 'https://invoices-benjo.netlify.app/',
-    sources_code: 'https://github.com/benjoquilario/crud-invoice-app',
+      "D-Invoices is used to manage invoices and allows the user to create, read, update, filter by status and delete invoices.",
+    image: ["/invoices.png", "/invoices-2.png", "/invoices-3.png"],
+    url: "https://invoices-benjo.netlify.app/",
+    sources_code: "https://github.com/benjoquilario/crud-invoice-app",
     tech: [
       {
-        name: 'JavaScript',
+        name: "JavaScript",
         icon: SiJavascript,
       },
       {
-        name: 'React',
+        name: "React",
         icon: SiReact,
       },
       {
-        name: 'TailwindCSS',
+        name: "TailwindCSS",
         icon: SiTailwindcss,
       },
       {
-        name: 'CSS3',
+        name: "CSS3",
         icon: SiCss3,
       },
       {
-        name: 'HTML5',
+        name: "HTML5",
         icon: SiHtml5,
       },
       {
-        name: 'Framer',
+        name: "Framer",
         icon: SiFramer,
       },
     ],
-    status: 'public',
+    status: "public",
   },
   {
-    name: 'AMABank',
+    name: "AMABank",
     description:
-      'AMABank is a responsive landing page which showcases accessibility practices from skip links to tabbable contents.',
-    image: ['/amabank.png', '/amabank-2.png', '/amabank-3.png'],
-    url: 'https://amabank-benjo.netlify.app/',
-    sources_code: 'https://github.com/benjoquilario/AMABank-Landing-page',
-    status: 'public',
+      "AMABank is a responsive landing page which showcases accessibility practices from skip links to tabbable contents.",
+    image: ["/amabank.png", "/amabank-2.png", "/amabank-3.png"],
+    url: "https://amabank-benjo.netlify.app/",
+    sources_code: "https://github.com/benjoquilario/AMABank-Landing-page",
+    status: "public",
     tech: [
       {
-        name: 'React',
+        name: "React",
         icon: SiReact,
       },
       {
-        name: 'Sass',
+        name: "Sass",
         icon: SiSass,
       },
       {
-        name: 'CSS3',
+        name: "CSS3",
         icon: SiCss3,
       },
       {
-        name: 'HTML5',
+        name: "HTML5",
         icon: SiHtml5,
       },
       {
-        name: 'Figma',
+        name: "Figma",
         icon: SiFigma,
       },
     ],
   },
-];
+]
 
 export const skillset = {
   backend: [
     {
-      name: 'Node',
+      name: "Node",
       icon: SiNodedotjs,
     },
     {
-      name: 'TypeScript',
+      name: "TypeScript",
       icon: SiTypescript,
     },
     {
-      name: 'GraphQL',
+      name: "GraphQL",
       icon: SiGraphql,
     },
     {
-      name: 'JavaScript (ES6+)',
+      name: "JavaScript (ES6+)",
       icon: SiJavascript,
     },
     {
-      name: 'Express',
+      name: "Express",
       icon: SiExpress,
     },
   ],
   frontend: [
     {
-      name: 'React',
+      name: "React",
       icon: SiReact,
     },
     {
-      name: 'NextJs',
+      name: "NextJs",
       icon: SiNodedotjs,
     },
     {
-      name: 'Redux',
+      name: "Redux",
       icon: SiRedux,
     },
     {
-      name: 'React-hook-form',
+      name: "React-hook-form",
       icon: SiReacthookform,
     },
     {
-      name: 'React Query',
+      name: "React Query",
       icon: SiReactquery,
     },
     {
-      name: 'React Router',
+      name: "React Router",
       icon: SiReactrouter,
     },
   ],
   database: [
     {
-      name: 'MongoDB',
+      name: "MongoDB",
       icon: SiMongodb,
     },
     {
-      name: 'Socket.io',
+      name: "Socket.io",
       icon: SiSocketdotio,
     },
     {
-      name: 'Prisma',
+      name: "Prisma",
       icon: SiPrisma,
     },
     {
-      name: 'Trpc',
+      name: "Trpc",
       icon: SiTrpc,
     },
   ],
   ui: [
     {
-      name: 'Styled Components',
+      name: "Styled Components",
       icon: SiStyledcomponents,
     },
     {
-      name: 'Chakra ui',
+      name: "Chakra ui",
       icon: SiChakraui,
     },
     {
-      name: 'TailwindCSS',
+      name: "TailwindCSS",
       icon: SiTailwindcss,
     },
     {
-      name: 'Sass',
+      name: "Sass",
       icon: SiSass,
     },
   ],
   boost: [
     {
-      name: 'VSCode',
+      name: "VSCode",
       icon: SiVisualstudiocode,
     },
     {
-      name: 'Git',
+      name: "Git",
       icon: SiGit,
     },
     {
-      name: 'Bash',
+      name: "Bash",
       icon: SiGnubash,
     },
   ],
-};
+}

@@ -1,19 +1,19 @@
-import { projects } from '@/lib/config';
-import React from 'react';
-import Project from '../shared/project';
+import { projects } from "@/lib/config"
+import React from "react"
+import Project from "../shared/project"
 
 const Projects = () => {
   return (
-    <section id="projects" className="pt-24 w-full">
-      <h4 className="font-mono uppercase text-2xl md:text-3xl font-semibold mb-2">
+    <section id="projects" className="w-full pt-24">
+      <h4 className="mb-2 font-mono text-2xl font-semibold uppercase md:text-3xl">
         <span className="text-4xl">S</span>
         ome of my works.
       </h4>
-      <p className="text-base text-dark font-semibold mb-4">
+      <p className="text-dark mb-4 text-base font-semibold">
         Each project is a unique piece of development.
       </p>
       <div>
-        {projects.map(project => (
+        {projects.map((project) => (
           <Project
             project={project}
             key={project.name}
@@ -22,7 +22,7 @@ const Projects = () => {
         ))}
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Projects;
+export default Projects
