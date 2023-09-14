@@ -1,6 +1,6 @@
 "use client"
 import React from "react"
-import { navList as lists } from "../layout/header"
+import { navList as lists } from "@/components/header"
 import { cn } from "@/lib/utils"
 
 type HeaderMenuProps = {

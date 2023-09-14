@@ -1,8 +1,7 @@
 import Hero from "@/components/section/hero"
 import Articles from "@/components/section/articles"
 import Repositories from "@/components/section/repositories"
-import Link from "next/link"
-import React from "react"
+import * as React from "react"
 
 export default function Home() {
   return (

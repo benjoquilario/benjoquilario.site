@@ -1,5 +1,4 @@
-"use client"
-import React from "react"
+import * as React from "react"
 import ArticleItem from "@/components/shared/article-item"
 import { TypographyH2 } from "../typography"
 import { allArticles } from "contentlayer/generated"
@@ -13,7 +12,7 @@ const Articles = () => {
       </TypographyH2>
       <ul className="mt-6 w-full">
         {allArticles.map((article) => (
-          <ArticleItem data={article} />
+          <ArticleItem article={article} />
         ))}
       </ul>
     </section>

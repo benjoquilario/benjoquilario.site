@@ -1,3 +1,5 @@
+"use client"
+
 import React from "react"
 import {
   SiJavascript,
@@ -8,10 +10,9 @@ import {
   SiNextdotjs,
   SiNodedotjs,
   SiTailwindcss,
-  SiRedux,
 } from "react-icons/si"
 import { ExternalLink } from "lucide-react"
-import { Button } from "../ui/button"
+import { Button } from "@/components/ui/button"
 
 const techIcon = [
   {

@@ -1,7 +1,7 @@
 "use client"
-import React from "react"
+import * as React from "react"
 
-import { navList as lists } from "./header"
+import { navList as lists } from "@/components/header"
 import { siteConfig } from "@/config/site"
 import { SocialLinks as socialLinks } from "@/config/config"
 import Link from "next/link"

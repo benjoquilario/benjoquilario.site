@@ -1,4 +1,5 @@
 "use client"
+
 import Image from "next/image"
 import type { MDXComponents } from "mdx/types"
 import { useMDXComponent } from "next-contentlayer/hooks"

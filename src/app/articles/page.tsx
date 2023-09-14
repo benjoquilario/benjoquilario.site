@@ -15,7 +15,7 @@ export default function Artices() {
       <div className="mt-3">
         <ul>
           {allArticles.map((article) => (
-            <ArticleItem data={article} />
+            <ArticleItem article={article} />
           ))}
         </ul>
       </div>

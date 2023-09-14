@@ -1,15 +1,11 @@
 "use client"
-import SkillSetModal from "@/components/techstack/skill-set-modal"
-import Tech from "@/components/techstack/tech"
+import * as React from "react"
 import { TypographyH2, TypographyH3 } from "@/components/typography"
+import Tech from "@/components/tech"
+import SkillSetModal from "@/components/skill-set-modal"
 import useClickOutside from "@/lib/hooks/useClickOutside"
-import React from "react"
 
-export const metadata = {
-  title: `About`,
-}
-
-const AboutPage = () => {
+const About = () => {
   const [isOpen, setIsOpen] = React.useState(false)
 
   const ref = React.useRef(null)
@@ -77,4 +73,4 @@ const AboutPage = () => {
   )
 }
 
-export default AboutPage
+export default About

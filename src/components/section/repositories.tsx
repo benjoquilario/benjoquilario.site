@@ -1,8 +1,7 @@
-"use client"
 import RepositoriesItem from "@/components/shared/repositories-item"
 import { REPOS } from "@/config/config"
-import React from "react"
 import { TypographyH2 } from "../typography"
+import * as React from "react"
 
 const Repositories = () => {
   return (

@@ -13,3 +13,10 @@ export type SiteConfig = {
   username: string
   mainNav: Array<{ title: string; href: string }>
 }
+
+export type Article = {
+  slug: string
+  description: string
+  title: string
+  date: Date
+}

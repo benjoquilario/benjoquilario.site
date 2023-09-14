@@ -1,4 +1,5 @@
-import { SkillSet } from "@/lib/types"
+"use client"
+import type { SkillSet } from "@/lib/types"
 import React from "react"
 
 type SkillSetProps = {
