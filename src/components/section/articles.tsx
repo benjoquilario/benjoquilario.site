@@ -2,6 +2,7 @@
 import React from "react"
 import ArticleItem from "@/components/shared/article-item"
 import { TypographyH2 } from "../typography"
+import { allArticles } from "contentlayer/generated"
 
 const Articles = () => {
   return (
@@ -11,9 +12,9 @@ const Articles = () => {
         atest Articles
       </TypographyH2>
       <ul className="mt-6 w-full">
-        <ArticleItem />
-        <ArticleItem />
-        <ArticleItem />
+        {allArticles.map((article) => (
+          <ArticleItem data={article} />
+        ))}
       </ul>
     </section>
   )

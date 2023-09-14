@@ -15,15 +15,11 @@ const computedFields = {
 }
 
 export const Article = defineDocumentType(() => ({
-  name: "Post",
-  filePathPattern: `article/**/*.mdx`,
+  name: "Article",
+  filePathPattern: `articles/**/*.mdx`,
   contentType: "mdx",
   fields: {
     title: {
-      type: "string",
-      required: true,
-    },
-    slug: {
       type: "string",
       required: true,
     },
@@ -39,7 +35,7 @@ export const Article = defineDocumentType(() => ({
 }))
 
 export default makeSource({
-  contentDirPath: "./content",
+  contentDirPath: "src/content",
   documentTypes: [Article],
   mdx: mdxOptions,
 })

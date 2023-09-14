@@ -1,3 +1,4 @@
+"use client"
 import RepositoriesItem from "@/components/shared/repositories-item"
 import { REPOS } from "@/config/config"
 import React from "react"

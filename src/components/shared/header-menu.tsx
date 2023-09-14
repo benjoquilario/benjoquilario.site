@@ -1,3 +1,4 @@
+"use client"
 import React from "react"
 import { navList as lists } from "../layout/header"
 import { cn } from "@/lib/utils"

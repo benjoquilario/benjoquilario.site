@@ -2,7 +2,7 @@ import Link from "next/link"
 import { Book, GitFork, Star, GithubIcon, ExternalLink } from "lucide-react"
 import React from "react"
 import { Badge } from "@/components/ui/badge"
-import { TypographyH3 } from "../typography"
+import { TypographyH3 } from "@/components/typography"
 
 async function getRepos(repo: string) {
   const res = await fetch(
