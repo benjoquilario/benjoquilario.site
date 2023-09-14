@@ -2,12 +2,12 @@ import { Metadata } from "next"
 import "@/styles/globals.css"
 import { Inter as FontSans, Oswald } from "next/font/google"
 import localFont from "next/font/local"
-import Header from "@/components/layout/header"
+import Header from "../components/layout/header"
 import { cn } from "@/lib/utils"
 import ThemeProvider from "@/components/theme-provider"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { siteConfig } from "@/config/site"
-import Footer from "@/components/layout/footer"
+import Footer from "../components/layout/footer"
 
 const fontSans = FontSans({
   subsets: ["latin"],
