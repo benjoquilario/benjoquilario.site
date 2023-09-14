@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from "react"
 import About from "@/components/section/about"
-import Projects from "@/components/section/project"
-import Hero from "@/components/shared/hero"
+// import Projects from "@/components/section/project"
 import Tech from "@/components/techstack/tech"
 import Contact from "@/components/section/contact"
 import SkillSetModal from "@/components/techstack/skill-set-modal"
@@ -34,10 +33,10 @@ const Main = () => {
 
   return (
     <main className="mx-auto mt-24 flex min-h-[calc(100vh_-_96px)] w-full max-w-5xl flex-col items-center justify-center px-4">
-      <Hero />
+      {/* <Hero /> */}
       <Tech isOpen={isOpen} setIsOpen={setIsOpen} />
       <About />
-      <Projects />
+      {/* <Projects /> */}
       <Contact />
       <SkillSetModal isOpen={isOpen} setIsOpen={setIsOpen} ref={ref} />
     </main>

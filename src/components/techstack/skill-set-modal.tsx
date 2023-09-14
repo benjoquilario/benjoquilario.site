@@ -1,6 +1,5 @@
 import React from "react"
 import Backdrop from "@/components/shared/backdrop"
-import { IoMdClose } from "react-icons/io"
 import SkillSet from "@/components/shared/skill-set"
 import { skillset } from "@/lib/config"
 import { Toggle } from "../ui/toggle"
