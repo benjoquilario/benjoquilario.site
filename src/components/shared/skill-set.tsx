@@ -1,4 +1,3 @@
-"use client"
 import type { SkillSet } from "@/lib/types"
 import React from "react"
 
