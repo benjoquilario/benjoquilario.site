@@ -1,5 +1,6 @@
 "use client"
-import React from "react"
+
+import * as React from "react"
 import { navList as lists } from "@/components/header"
 import { cn } from "@/lib/utils"
 

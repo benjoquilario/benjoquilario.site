@@ -1,6 +1,6 @@
 "use client"
 import * as React from "react"
-import Backdrop from "@/components/shared/backdrop"
+import Backdrop from "../components/shared/backdrop"
 import SkillSet from "@/components/shared/skill-set"
 import { skillset } from "@/lib/config"
 import { Toggle } from "./ui/toggle"

@@ -12,7 +12,7 @@ const Articles = () => {
       </TypographyH2>
       <ul className="mt-6 w-full">
         {allArticles.map((article) => (
-          <ArticleItem article={article} />
+          <ArticleItem key={article._id} article={article} />
         ))}
       </ul>
     </section>
