@@ -24,4 +24,4 @@ const Backdrop = React.forwardRef<HTMLDivElement, BackdropProps>(
 
 Backdrop.displayName = "Backdrop"
 
-export default Backdrop
+export { Backdrop }
