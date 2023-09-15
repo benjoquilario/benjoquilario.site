@@ -5,7 +5,6 @@ import { Toggle } from "./ui/toggle"
 import { X } from "lucide-react"
 import { cn } from "@/lib/utils"
 import SkillSet from "@/components/shared/skill-set"
-import { Backdrop } from "@/components/shared/backdrop"
 import * as React from "react"
 
 type ModalArsenalProps = {
@@ -17,11 +16,12 @@ type ModalArsenalProps = {
 const SkillSetModal = React.forwardRef<HTMLDivElement, ModalArsenalProps>(
   (props, ref) => {
     return (
-      <Backdrop
+      <div
         className={cn(
           props.className,
           props.isOpen ? "visible opacity-100" : "invisible opacity-0",
-          "transition"
+          "transition",
+          "fixed left-0 top-0 z-50 !m-0 flex min-h-screen w-full animate-[opacity_0.5s_ease-in-out] items-center justify-center bg-gradient-to-r from-[#00000080] to-[#00000080]"
         )}
       >
         <div
@@ -57,7 +57,7 @@ const SkillSetModal = React.forwardRef<HTMLDivElement, ModalArsenalProps>(
             </p>
           </footer>
         </div>
-      </Backdrop>
+      </div>
     )
   }
 )
