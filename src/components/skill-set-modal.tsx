@@ -1,11 +1,12 @@
 "use client"
-import * as React from "react"
-import Backdrop from "../components/shared/backdrop"
-import SkillSet from "@/components/shared/skill-set"
+
 import { skillset } from "@/lib/config"
 import { Toggle } from "./ui/toggle"
 import { X } from "lucide-react"
 import { cn } from "@/lib/utils"
+import SkillSet from "@/components/shared/skill-set"
+import Backdrop from "@/components/shared/backdrop"
+import * as React from "react"
 
 type ModalArsenalProps = {
   className?: string
