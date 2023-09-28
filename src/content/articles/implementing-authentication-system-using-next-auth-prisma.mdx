@@ -53,7 +53,7 @@ You can directly add your auth options in this file, but I prefer using a differ
 
 Let’s create an `auth.ts` file in `src/lib` folder and give providers.
 
-```jsx
+```js
 import { NextAuthOptions } from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 
@@ -76,7 +76,7 @@ export const authOptions: NextAuthOptions = {
 
 Create a `db.ts` with the same folder of `auth.ts` `src/lib`
 
-```jsx
+```js
 import { PrismaClient } from "@prisma/client"
 
 declare global {
@@ -95,7 +95,7 @@ We are now ready to create a route handler and add these options. Open up the ro
 
 `app/api/auth/[…nextauth]/route.ts`
 
-```jsx
+```js
 import { authOptions } from "@/utils/auth"
 
 const handler = NextAuth(authOptions)
@@ -113,7 +113,7 @@ After it's done
 
 Open `schema.prisma` file in `prisma` folder and add this code block:
 
-```jsx
+```js
 
 generator client {
   provider = "prisma-client-js"
@@ -170,13 +170,13 @@ After creating our authentication schema create a [mongodb](https://account.mong
 After that Click the `Database` under Deployment Click connect and choose `MongoDB for VS Code` copy paste `Connect to your MongoDB deployment.`
 make sure to change the password with your actual password, you can find your password in `Database Access` click edit then `Edit Password`
 
-```jsx
+```bash
   mongodb+srv://benjoquilario:<password>@cluster0.kfb2gwd.mongodb.net/
 ```
 
 Create .env file in root folder create DATABASE_URL with value of your database connection string
 
-```jsx
+```bash
 DATABASE_URL=mongodb+srv://benjoquilario:<password>@cluster0.kfb2gwd.mongodb.net/
 NEXTAUTH_SECRET=secret
 ```
@@ -191,7 +191,7 @@ Make sure you push your model successfully into your database.
 
 Let’s get back to the auth options and add our prisma adapter.
 
-```jsx
+```js
 import { NextAuthOptions } from "next-auth"
 import bcrypt from "bcrypt"
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
@@ -246,8 +246,8 @@ For out typesafe validation we'll be using [zod](https://zod.dev/)
 
 Let’s create a `credentials.ts` file in `src/lib/validations` folder and give validations.
 
-```jsx
-import { z } from "zod"
+```js
+import * as z from "zod"
 
 export const credentialsValidator = z.object({
   email: z.string().email(),
@@ -269,7 +269,7 @@ The path of our authentication is `/auth/login` and `/auth/register`.
 
 create `auth-form.tsx` in your components folder this will serve as our form for our authentication.
 
-```jsx
+```js
 import { zodResolver } from "@hookform/resolvers/zod"
 import { signIn, useSession } from "next-auth/react"
 import { useForm } from "react-hook-form"
@@ -383,7 +383,7 @@ export default function AuthForm({ type }: AuthFormProps) {
 
 In your auth pages /auth/login import `auth-form.tsx` make sure to change the props type of `<AuthForm />` component.
 
-```jsx
+```js
 import AuthForm from "@/components/auth-form.tsx"
 
 import * as React from "react"
@@ -401,7 +401,7 @@ export default Login
 
 In your register path `/auth/register`
 
-```jsx
+```js
 import AuthForm from "@/components/auth-form.tsx"
 
 import * as React from "react"

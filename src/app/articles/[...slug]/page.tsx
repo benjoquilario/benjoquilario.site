@@ -61,7 +61,7 @@ export default async function ArticlePage({ params }: ArticleProps) {
   if (!article) notFound()
 
   return (
-    <article className="prose py-6 dark:prose-invert">
+    <article className="max-w-none break-words py-6">
       <Link
         href="/"
         className="flex items-center space-x-2 py-2 transition hover:underline hover:underline-offset-2"
@@ -69,7 +69,9 @@ export default async function ArticlePage({ params }: ArticleProps) {
         <ChevronLeft className="mr-2 h-4 w-4" />
         Back
       </Link>
-      <h1>{article.title}</h1>
+      <h1 className="my-2 inline-block font-heading text-4xl leading-tight lg:text-5xl">
+        {article.title}
+      </h1>
       {article.description && <p>{article.description}</p>}
 
       <hr className="my-4" />
