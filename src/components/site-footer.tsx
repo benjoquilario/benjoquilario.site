@@ -2,8 +2,8 @@
 import * as React from "react"
 
 import { navList as lists } from "@/components/header"
-import { siteConfig } from "@/config/site"
 import { SocialLinks as socialLinks } from "@/config/config"
+import { siteConfig } from "@/config/site"
 import Link from "next/link"
 
 const Footer = () => {
@@ -15,13 +15,13 @@ const Footer = () => {
             Other Pages
           </h4>
           <ul className="flex flex-col gap-3">
-            {lists.map((list) => (
-              <li key={list.href}>
+            {siteConfig.otherNav.map((item) => (
+              <li key={item.href}>
                 <Link
-                  href={list.href}
+                  href={item.href}
                   className="text-muted-foreground/80 transition-colors hover:text-muted-foreground/90"
                 >
-                  {list.title}
+                  {item.title}
                 </Link>
               </li>
             ))}

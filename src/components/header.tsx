@@ -1,10 +1,12 @@
 "use client"
+
 import React, { useEffect, useState } from "react"
 import HeaderMenu from "@/components/shared/header-menu"
 import { Menu } from "lucide-react"
 import { cn } from "@/lib/utils"
 import ThemeToggle from "@/components/theme-toggle"
 import { Toggle } from "@/components/ui/toggle"
+import { useSelectedLayoutSegment } from "next/navigation"
 import Link from "next/link"
 
 export const navList = [
@@ -27,6 +29,7 @@ export const navList = [
 ]
 
 const Header = () => {
+  const segment = useSelectedLayoutSegment()
   const [isOpen, setIsOpen] = useState(false)
 
   useEffect(() => {
@@ -63,13 +66,18 @@ const Header = () => {
             {/* <button className="md:hidden absolute top-7 right-6 flex flex-col justify-center items-center bg-transition z-[999]"></button> */}
             <div className="relative hidden md:block">
               <ul className="flex gap-3">
-                {navList.map((list) => (
-                  <li key={list.href}>
+                {navList.map((item) => (
+                  <li key={item.href}>
                     <Link
-                      href={list.href}
-                      className="text-sm text-muted-foreground/60 transition-colors hover:text-muted-foreground/80"
+                      href={item.href}
+                      className={cn(
+                        "text-sm transition-colors",
+                        item.href.startsWith(`/${segment}`)
+                          ? "font-medium text-foreground hover:text-foreground"
+                          : "font-normal text-foreground/60 hover:text-foreground/80"
+                      )}
                     >
-                      {list.title}
+                      {item.title}
                     </Link>
                   </li>
                 ))}

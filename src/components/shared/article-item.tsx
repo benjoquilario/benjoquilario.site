@@ -21,7 +21,7 @@ const ArticleItem: React.FC<ArticleItemProps> = ({ article }) => {
           <TypographyH3 className="line-clamp-1 text-lg">
             {article.title}
           </TypographyH3>
-          <span className="line-clamp-1 text-sm text-muted-foreground md:text-base">
+          <span className="line-clamp-2 text-sm text-muted-foreground md:text-base">
             {article.description}
           </span>
           <div className="flex flex-wrap items-stretch justify-start gap-3">

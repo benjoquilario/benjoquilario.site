@@ -12,6 +12,7 @@ export type SiteConfig = {
   email: string
   username: string
   mainNav: Array<{ title: string; href: string }>
+  otherNav: Array<{ title: string; href: string }>
 }
 
 export type Article = {

@@ -1,4 +1,5 @@
-import { TwitterIcon, GithubIcon, LinkedinIcon } from "lucide-react"
+import { GithubIcon, LinkedinIcon } from "lucide-react"
+import { RiTwitterXLine } from "react-icons/ri"
 import { siteConfig } from "./site"
 
 export const REPOS = [
@@ -13,7 +14,7 @@ export const REPOS = [
 export const SocialLinks = [
   {
     title: "Twitter",
-    icon: TwitterIcon,
+    icon: RiTwitterXLine,
     path: siteConfig.links.twitter,
   },
   {

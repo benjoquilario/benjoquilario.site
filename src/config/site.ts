@@ -25,6 +25,16 @@ export const siteConfig: SiteConfig = {
       href: "/guestbook",
     },
   ],
+  otherNav: [
+    {
+      title: "Home",
+      href: "/",
+    },
+    {
+      title: "Uses",
+      href: "/uses",
+    },
+  ],
   links: {
     twitter: "https://twitter.com/iam_benjo",
     github: "https://github.com/benjoquilario",

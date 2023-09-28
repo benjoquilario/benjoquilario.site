@@ -5,6 +5,7 @@ import React from "react"
 import { SignIn, SignOut } from "./buttons"
 import { getSession } from "@/lib/session"
 import FormEntry from "./form"
+import { lowerCaseName } from "@/lib/utils"
 
 export const metadata: Metadata = {
   title: "Guestbook",
@@ -24,6 +25,7 @@ async function getGuestBook() {
       created_by: true,
       body: true,
     },
+    take: 100,
   })
 }
 
@@ -50,7 +52,7 @@ export default async function GuestBook() {
         {entries?.map((entry) => (
           <div className="w-full break-words" key={entry.id}>
             <span className="mr-1 text-muted-foreground">
-              {entry.created_by}:
+              {lowerCaseName(entry.created_by)}:
             </span>
             {entry.body}
           </div>
