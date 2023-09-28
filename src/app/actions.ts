@@ -64,7 +64,7 @@ export async function saveGuestbookEntry(entry: string) {
 
   if (process.env.NODE_ENV === "production")
     await sendMail({
-      from: "onboarding@resend.dev",
+      from: "guestbook@benjoquilario.vercel.app",
       to: "benjoquilario@gmail.com",
       subject: "New Guestbook Entry",
       html: `<p>Email: ${email}</p><p>Message: ${body}</p>`,
