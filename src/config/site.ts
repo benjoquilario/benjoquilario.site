@@ -13,12 +13,16 @@ export const siteConfig: SiteConfig = {
       href: "/about",
     },
     {
-      title: "Blog",
-      href: "/blog",
+      title: "Articles",
+      href: "/articles",
     },
     {
       title: "Contact",
       href: "/contact",
+    },
+    {
+      title: "Guestbook",
+      href: "/guestbook",
     },
   ],
   links: {
