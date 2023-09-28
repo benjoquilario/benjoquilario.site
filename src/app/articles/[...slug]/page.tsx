@@ -17,10 +17,13 @@ export async function generateMetadata({
   params,
 }: {
   params: {
-    slug: string
+    slug: string[]
   }
 }): Promise<Metadata | undefined> {
-  const article = allArticles.find((article) => article.slug === params.slug)
+  
+  const article = allArticles.find(
+    (article) => article.slugAsParams === params.slug.join("/")
+  )
   if (!article) {
     return
   }
