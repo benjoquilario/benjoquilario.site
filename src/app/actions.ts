@@ -42,6 +42,7 @@ export async function saveGuestbookEntry(entry: string) {
     redis: kv,
     limiter: Ratelimit.fixedWindow(2, "1 m"),
   })
+
   const { success, reset } = await ratelimit.limit(email)
 
   if (!success) {
