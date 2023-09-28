@@ -6,6 +6,8 @@ import { Calendar, Clock } from "lucide-react"
 import { relativeDate } from "@/lib/date"
 import { ChevronLeft } from "lucide-react"
 import Link from "next/link"
+import { siteConfig } from "@/config/site"
+import { env } from "@/env.mjs"
 
 interface ArticleProps {
   params: {
@@ -20,15 +22,15 @@ export async function generateMetadata({
     slug: string[]
   }
 }): Promise<Metadata | undefined> {
-  
   const article = allArticles.find(
     (article) => article.slugAsParams === params.slug.join("/")
   )
+
   if (!article) {
     return
   }
 
-  const { title, date: publishedTime, description, slug } = article
+  const { title, date: publishedTime, description, slugAsParams } = article
 
   return {
     title,
@@ -38,13 +40,9 @@ export async function generateMetadata({
       description,
       type: "article",
       publishedTime,
-      url: `https://benjoquilario.vercel.app/articles/${slug}`,
+      url: `${env.NEXT_PUBLIC_APP_URL}/articles/${slugAsParams}`,
     },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-    },
+    publisher: `${siteConfig.name}`,
   }
 }
 

@@ -55,16 +55,42 @@ const About = () => {
               create the best possible user experience, recently found myself
               studying backend apis and UX/UI Design too. <br />
               <br />
+              My favorite stack right now is{" "}
+              <a href="https://react.dev/" className="underline">
+                React
+              </a>
+              ,{" "}
+              <a href="https://nextjs.org/docs" className="underline">
+                Next.js(app dir)
+              </a>
+              ,{" "}
+              <a href="https://tailwindcss.com/" className="underline">
+                TailwindCSS
+              </a>{" "}
+              with{" "}
+              <a href="https://ui.shadcn.com/" className="underline">
+                shadcn/ui
+              </a>
+              ,{" "}
+              <a href="https://www.prisma.io/" className="underline">
+                Prisma.io
+              </a>
+              , and{" "}
+              <a href="https://www.mongodb.com/" className="underline">
+                MongoDB
+              </a>
+              .
+              <br />
               Since technology never stops growing. I always keep myself updated
-              by reading documentation, watching videos(FireShip) and by trying
-              out new stack every month.
+              by reading documentation and by trying out new stack every month.
             </p>
             <Tech isOpen={isOpen} setIsOpen={setIsOpen} />
             <p className="text-xs leading-6 text-muted-foreground md:text-[13px]">
               When I&apos;m not coding away on the latest web project, I love
-              watching movies, anime and playing games, Breaking Bad and GoT are
-              my most favorite shows of all time(no one ask 😂). <br /> <br />I
-              drink a lot during parties/celebrations and I like getting wasted.
+              watching movies, anime and playing games. I&apos;m a huge fan of
+              League of Legends, Clash of Clans and Dota2. Breaking Bad and GoT
+              are my most favorite shows of all time. <br /> <br />I drink a lot
+              during parties/celebrations and I like getting wasted.
             </p>
           </div>
         </div>

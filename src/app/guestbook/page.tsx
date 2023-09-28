@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 }
 
 export const dynamic = "force-dynamic"
-export const runtime = "edge"
+// export const runtime = "edge"
 
 async function getGuestBook() {
   return await db.bookEntry.findMany({
