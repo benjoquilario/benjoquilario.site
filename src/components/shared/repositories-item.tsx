@@ -35,7 +35,7 @@ export default async function RepositoriesItem({
     <li className="relative -mx-4 md:-mx-0">
       <Link
         href={repositories.html_url}
-        className="flex rounded-sm px-4 py-4 transition-colors hover:bg-accent"
+        className="flex rounded-sm p-4 transition-colors hover:bg-accent"
         target="_blank"
       >
         <article className="flex flex-col gap-2 rounded-sm">

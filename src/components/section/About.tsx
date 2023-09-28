@@ -3,7 +3,7 @@ import * as React from "react"
 import { TypographyH2, TypographyH3 } from "@/components/typography"
 import Tech from "@/components/tech"
 import SkillSetModal from "@/components/skill-set-modal"
-import useClickOutside from "@/lib/hooks/useClickOutside"
+import useClickOutside from "@/hooks/useClickOutside"
 
 const About = () => {
   const [isOpen, setIsOpen] = React.useState(false)

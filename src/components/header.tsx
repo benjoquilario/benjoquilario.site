@@ -17,8 +17,12 @@ export const navList = [
     title: "Articles",
   },
   {
-    href: "#contact",
+    href: "/contact",
     title: "Contact",
+  },
+  {
+    href: "/guestbook",
+    title: "Guestbook",
   },
 ]
 
@@ -76,7 +80,7 @@ const Header = () => {
             className={cn(
               isOpen
                 ? "visible right-0 top-[64px] opacity-100"
-                : "invisible -right-[1000px] -top-4 opacity-0"
+                : "invisible -top-4 right-[-1000px] opacity-0"
             )}
           />
           <div className="flex gap-2">

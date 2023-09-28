@@ -15,6 +15,12 @@ type ModalArsenalProps = {
 
 const SkillSetModal = React.forwardRef<HTMLDivElement, ModalArsenalProps>(
   (props, ref) => {
+    const buttonRef = React.useRef<HTMLButtonElement | null>(null)
+
+    React.useEffect(() => {
+      buttonRef?.current?.focus()
+    }, [])
+
     return (
       <div
         className={cn(
@@ -37,7 +43,11 @@ const SkillSetModal = React.forwardRef<HTMLDivElement, ModalArsenalProps>(
             <h4 className="scroll-m-20 font-heading text-base font-semibold leading-tight md:text-lg">
               Full Skill Set List
             </h4>
-            <Toggle onClick={() => props.setIsOpen(!props.isOpen)}>
+            <Toggle
+              className="mr-2"
+              ref={buttonRef}
+              onClick={() => props.setIsOpen(!props.isOpen)}
+            >
               <X />
             </Toggle>
           </div>

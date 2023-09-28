@@ -26,6 +26,8 @@ import {
   SiGit,
   SiExpress,
   SiHeroku,
+  SiApollographql,
+  SiPostman,
 } from "react-icons/si"
 
 export const projects = [
@@ -236,6 +238,10 @@ export const skillset = {
       name: "React Router",
       icon: SiReactrouter,
     },
+    {
+      name: "Apollo Graphql",
+      icon: SiApollographql,
+    },
   ],
   database: [
     {
@@ -285,6 +291,10 @@ export const skillset = {
     {
       name: "Bash",
       icon: SiGnubash,
+    },
+    {
+      name: "Postman",
+      icon: SiPostman,
     },
   ],
 }

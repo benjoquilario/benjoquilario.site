@@ -69,11 +69,14 @@ const Tech: React.FC<TechProps> = ({ isOpen, setIsOpen }) => {
             </div>
           ))}
         </div>
-        <div className="mb-2 mt-1 flex items-start justify-start">
-          <Button variant="ghost" onClick={() => setIsOpen(!isOpen)}>
+        <div className="my-3 flex items-start justify-start">
+          <button
+            className="flex items-center text-sm"
+            onClick={() => setIsOpen(!isOpen)}
+          >
             See my full arsenal
             <ExternalLink className="ml-1 h-4 w-4" />
-          </Button>
+          </button>
         </div>
       </div>
     </div>

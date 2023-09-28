@@ -8,6 +8,7 @@ import ThemeProvider from "@/components/theme-provider"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { siteConfig } from "@/config/site"
 import Footer from "@/components/site-footer"
+import { Toaster } from "@/components/ui/toaster"
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -96,6 +97,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <main>{children}</main>
             <Footer />
           </div>
+          <Toaster />
           <TailwindIndicator />
           {/* <Analytics /> */}
         </ThemeProvider>

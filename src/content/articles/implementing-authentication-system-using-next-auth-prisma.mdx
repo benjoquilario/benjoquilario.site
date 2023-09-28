@@ -1,0 +1,424 @@
+---
+title: Implement role-base authentication system using Next.js with app dir
+description: A guide that explains how to build a role-base authentication system using Next-Auth and Prisma Adapter.
+date: 2023-09-19
+timeToRead: "12"
+---
+
+In this article post, I'll walk you through the step-by-step process of creating role-based authentication system for your Next.js application using Next Auth and Prisma adapter credentials. You’ll have a solid foundation to build flexible and scalable user access control systems by the end.
+
+In this project, we'll be using a `Next.js (app directory)`. As you know, after Next.js 13, we create API routes using the `App directory` and route files.
+
+First let's talk about what technologies we'll be using.
+
+### Next.js
+
+Next.js is a React framework for building full-stack web applications. You use React Components to build user interfaces, and Next.js for additional features and optimizations.
+
+Under the hood, Next.js also abstracts and automatically configures tooling needed for React, like bundling, compiling, and more. This allows you to focus on building your application instead of spending time with configuration.
+
+Whether you're an individual developer or part of a larger team, Next.js can help you build interactive, dynamic, and fast React applications.
+
+### Prisma
+
+Prisma is an open source next-generation ORM.
+
+### Next-Auth
+
+NextAuth.js is a complete open source authentication solution for Next.js applications. It is designed from the ground up to support Next.js and Serverless.
+
+### Mongodb
+
+MongoDB is a document database with the scalability and flexibility that you want with the querying and indexing that you need
+
+First, lets create a new Next.js application, you can follow the official guide [here](https://nextjs.org/docs). I will be using `pnpm` for this, but you can use `npm` or `yarn` also we'll be using a typescript.
+
+```bash
+pnpm create next-app auth-example --template typescript
+```
+
+After creating a new Next.js application let's install a necessary dependencies for this project.
+
+```bash
+pnpm add next-auth @prisma/client @next-auth/prisma-adapter @hookform/resolvers react-hook-form zod bcrypt
+```
+
+```bash
+pnpm add prisma -D
+```
+
+To add Next Auth.js to the project create a file called route.ts in `app/api/auth/[…nextauth]` folder.
+
+You can directly add your auth options in this file, but I prefer using a different folder to be able to reuse the options later.
+
+Let’s create an `auth.ts` file in `src/lib` folder and give providers.
+
+```jsx
+import { NextAuthOptions } from "next-auth"
+import CredentialsProvider from "next-auth/providers/credentials"
+
+export const authOptions: NextAuthOptions = {
+  providers: [
+    CredentialsProvider({
+      name: "credentials",
+      async authorize(credentials) {
+        // ...
+      },
+    }),
+  ],
+  debug: process.env.NODE_ENV === "development",
+  session: {
+    strategy: "jwt",
+  },
+  secret: process.env.NEXTAUTH_SECRET,
+}
+```
+
+Create a `db.ts` with the same folder of `auth.ts` `src/lib`
+
+```jsx
+import { PrismaClient } from "@prisma/client"
+
+declare global {
+  var prisma: PrismaClient | undefined
+}
+
+const client = globalThis.prisma || new PrismaClient()
+if (process.env.NODE_ENV !== "production") globalThis.prisma = client
+
+export default client
+```
+
+Just copy and paste to `db.ts` file
+
+We are now ready to create a route handler and add these options. Open up the route file and add this.
+
+`app/api/auth/[…nextauth]/route.ts`
+
+```jsx
+import { authOptions } from "@/utils/auth"
+
+const handler = NextAuth(authOptions)
+
+export { handler as GET, handler as POST }
+```
+
+Now initialize prisma and create our authentication schema
+
+```bash
+npx prisma init
+```
+
+After it's done
+
+Open `schema.prisma` file in `prisma` folder and add this code block:
+
+```jsx
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id              String @id @default(auto()) @map("_id") @db.ObjectId
+  name            String?
+  email           String? @unique
+  emailVerified   DateTime?
+  image           String?
+  hashedPassword  String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  jobPosts        JobPost[]
+  accounts        Account[]
+}
+
+// I'll this Account model incase you want to add ather credentials like google or github
+model Account {
+  id              String @id @default(auto()) @map("_id") @db.ObjectId
+  userId          String @db.ObjectId
+  type            String
+  provider        String
+  providerAccountId String
+  refresh_token   String? @db.String
+  access_token    String? @db.String
+  expires_at      Int?
+  token_type      String?
+  scope           String?
+  id_token        String? @db.String
+  session_state   String?
+
+  user            User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+```
+
+After creating our authentication schema create a [mongodb](https://account.mongodb.com/account/login) atlas account
+
+1.  Find `Database` under Deployment left corner of the page and click `Build a Database`
+2.  Click `M0 Free` tier, click `AWS provider` set region(optional)
+3.  Type the name of database and click create
+4.  Click `Network Access` under `Security` click `+add ip address`
+5.  Set `Access List Entry:` to `0.0.0.0/0` click confirm
+
+After that Click the `Database` under Deployment Click connect and choose `MongoDB for VS Code` copy paste `Connect to your MongoDB deployment.`
+make sure to change the password with your actual password, you can find your password in `Database Access` click edit then `Edit Password`
+
+```jsx
+  mongodb+srv://benjoquilario:<password>@cluster0.kfb2gwd.mongodb.net/
+```
+
+Create .env file in root folder create DATABASE_URL with value of your database connection string
+
+```jsx
+DATABASE_URL=mongodb+srv://benjoquilario:<password>@cluster0.kfb2gwd.mongodb.net/
+NEXTAUTH_SECRET=secret
+```
+
+Next, after getting database connection string push your model to your database by running
+
+```bash
+npx prisma db push
+```
+
+Make sure you push your model successfully into your database.
+
+Let’s get back to the auth options and add our prisma adapter.
+
+```jsx
+import { NextAuthOptions } from "next-auth"
+import bcrypt from "bcrypt"
+import { PrismaAdapter } from "@next-auth/prisma-adapter"
+import CredentialsProvider from "next-auth/providers/credentials"
+import { credentialsValidator } from "@/lib/validations/credentials"
+import db from "./db"
+
+export const authOptions: NextAuthOptions = {
+  adapter: PrismaAdapter(db),
+  providers: [
+    CredentialsProvider({
+      name: "credentials",
+      credentials: {
+        email: { label: "email", type: "text" },
+        password: { label: "password", type: "password" },
+      },
+      async authorize(credentials) {
+        const cred = await credentialsValidator.parseAsync(credentials)
+        if (!cred.email || !cred?.password) {
+          throw new Error("Invalid Credentials")
+        }
+
+        const user = await db.user.findUnique({
+          where: {
+            email: cred.email,
+          },
+        })
+
+        if (!user || !user?.hashedPassword)
+          throw new Error("Invalid Credentials")
+
+        const isPasswordCorrect = await bcrypt.compare(
+          cred.password,
+          user.hashedPassword
+        )
+
+        if (!isPasswordCorrect) throw new Error("Invalid credentials")
+
+        return user
+      },
+    }),
+  ],
+  debug: process.env.NODE_ENV === "development",
+  session: {
+    strategy: "jwt",
+  },
+  secret: process.env.NEXTAUTH_SECRET,
+}
+```
+
+For out typesafe validation we'll be using [zod](https://zod.dev/)
+
+Let’s create a `credentials.ts` file in `src/lib/validations` folder and give validations.
+
+```jsx
+import { z } from "zod"
+
+export const credentialsValidator = z.object({
+  email: z.string().email(),
+  password: z.string(),
+})
+
+export const registerValidator = credentialsValidator.extend({
+  name: z.string().optional(),
+})
+```
+
+From now on, the adapter will handle authentication and automatically add new users, sessions, and accounts into the database.
+
+Let's go with our front-end where we can input our data.
+
+In your `app` folder create a folder called `auth` inside of auth folder create `login` and `register` folder inside of those two create `page.tsx` file you can now design your authentication pages.
+
+The path of our authentication is `/auth/login` and `/auth/register`.
+
+create `auth-form.tsx` in your components folder this will serve as our form for our authentication.
+
+```jsx
+import { zodResolver } from "@hookform/resolvers/zod"
+import { signIn, useSession } from "next-auth/react"
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useRouter } from "next/navigation"
+import * as z from "zod"
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+import { Label } from "@/components/ui/label"
+import { userAuthSchema } from "@/lib/validations/auth"
+import React, { useCallback, useState } from "react"
+
+interface AuthFormProps {
+  type: "login" | "register"
+}
+
+type Inputs = z.infer<typeof userAuthSchema>
+
+export default function AuthForm({ type }: AuthFormProps) {
+  const router = useRouter()
+  const [isLoading, setIsLoading] = useState(false)
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Inputs>({
+    resolver: zodResolver(userAuthSchema),
+  })
+
+  async function handleOnSubmit(data: Inputs) {
+    if (type === "register") {
+      const res = await fetch("/api/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          password: data.password,
+        }),
+      })
+      setIsLoading(true)
+
+      if (res.ok) return setTimeout(() => router.push("/auth/login"), 2000)
+
+      if (!res.ok) return console.log("Something went wrong!")
+    } else {
+      const res = await signIn("credentials", { ...data, redirect: false })
+
+      if (res?.ok) {
+        router.refresh()
+
+        router.push("/")
+      }
+
+      if (!res?.ok) {
+        setIsLoading(false)
+
+        console.log("Login Failed")
+      }
+    }
+  }
+
+  return (
+    <form className="grid gap-4" onSubmit={handleSubmit(handleOnSubmit)}>
+      {type === "register" && (
+        <div className="grid gap-2">
+          <Label htmlFor="name">Name</Label>
+            <Input
+              {...register("name")}
+              type="text"
+              id="name"
+              autoCapitalize="none"
+              autoCorrect="off"
+              disabled={isLoading}
+            />
+        </div>)}
+          <div className="grid gap-2">
+            <Label htmlFor="email">Email</Label>
+            <Input
+              {...register("email", { required: true })}
+              id="email"
+              placeholder="m@example.com"
+              autoCapitalize="none"
+              autoComplete="email"
+              autoCorrect="off"
+              type="email"
+              disabled={isLoading}
+            />
+          </div>
+          <div className="grid gap-2">
+            <Label htmlFor="password">Password</Label>
+            <Input
+              {...register("password", { required: true })}
+              type="password"
+              id="password"
+              autoCapitalize="none"
+              autoCorrect="off"
+              disabled={isLoading}
+            />
+          </div>
+          <Button className="w-full" disabled={isLoading} type="submit">
+            {type === "login" ? "Sign In" : "Create an account"}
+          </Button>
+        </form>
+  )
+}
+```
+
+In your auth pages /auth/login import `auth-form.tsx` make sure to change the props type of `<AuthForm />` component.
+
+```jsx
+import AuthForm from "@/components/auth-form.tsx"
+
+import * as React from "react"
+
+const Login = () => {
+  return (
+    <div className="flex flex-col items-center justify-center">
+      <AuthForm type="login" />
+    </div>
+  )
+}
+
+export default Login
+```
+
+In your register path `/auth/register`
+
+```jsx
+import AuthForm from "@/components/auth-form.tsx"
+
+import * as React from "react"
+
+const Login = () => {
+  return (
+    <div className="flex flex-col items-center justify-center">
+      <AuthForm type="register" />
+    </div>
+  )
+}
+
+export default Login
+```
+
+Overall, Next-auth is a powerful tool for handling authentication in Next.js.
+
+You can learn more about Next-auth on the [Next-auth](https://next-auth.js.org/) docs or on the [Next-auth GitHub](https://github.com/nextauthjs/next-auth) page
+
+If you want to know more about how to use Next in your Next.js application, this is a good place to start.

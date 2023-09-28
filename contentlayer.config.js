@@ -30,6 +30,9 @@ export const Article = defineDocumentType(() => ({
       type: "date",
       required: true,
     },
+    timeToRead: {
+      type: "string",
+    },
   },
   computedFields,
 }))
