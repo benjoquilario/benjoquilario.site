@@ -1,6 +1,12 @@
+import type { Metadata } from "next"
 import { allArticles } from "contentlayer/generated"
 import { TypographyH3 } from "@/components/typography"
 import ArticleItem from "@/components/shared/article-item"
+
+export const metadata: Metadata = {
+  title: "Article",
+  description: "Read my thoughts on software development, design, and more.",
+}
 
 export default function Artices() {
   return (

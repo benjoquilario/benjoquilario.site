@@ -8,8 +8,11 @@ import FormEntry from "./form"
 
 export const metadata: Metadata = {
   title: "Guestbook",
-  description: "Say something nice to me",
+  description: "Sign my guestbook and leave your mark.",
 }
+
+export const dynamic = "force-dynamic"
+export const runtime = "edge"
 
 async function getGuestBook() {
   return await db.bookEntry.findMany({
@@ -24,15 +27,15 @@ async function getGuestBook() {
   })
 }
 
-export const dynamic = "force-dynamic"
-
 export default async function GuestBook() {
   const session = await getSession()
   const entries = await getGuestBook()
 
   return (
     <div className="space-y-4">
-      <TypographyH2>Sign my guestbook</TypographyH2>
+      <h1 className="mb-8 text-2xl font-bold tracking-tighter">
+        Sign my guestbook
+      </h1>
       {session?.user ? (
         <>
           <FormEntry />

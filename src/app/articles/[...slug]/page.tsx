@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import { Mdx } from "@/components/mdx-components"
 import { allArticles } from "contentlayer/generated"
 import { notFound } from "next/navigation"
@@ -9,6 +10,38 @@ import Link from "next/link"
 interface ArticleProps {
   params: {
     slug: string[]
+  }
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: {
+    slug: string
+  }
+}): Promise<Metadata | undefined> {
+  const article = allArticles.find((article) => article.slug === params.slug)
+  if (!article) {
+    return
+  }
+
+  const { title, date: publishedTime, description, slug } = article
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: "article",
+      publishedTime,
+      url: `https://benjoquilario.vercel.app/articles/${slug}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
   }
 }
 

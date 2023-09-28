@@ -1,9 +1,15 @@
 "use client"
+import type { Metadata } from "next"
 import * as React from "react"
 import { TypographyH2, TypographyH3 } from "@/components/typography"
 import Tech from "@/components/tech"
 import SkillSetModal from "@/components/skill-set-modal"
 import useClickOutside from "@/hooks/useClickOutside"
+
+export const metadata: Metadata = {
+  title: "About",
+  description: "About Benjo M. Quilario",
+}
 
 const About = () => {
   const [isOpen, setIsOpen] = React.useState(false)

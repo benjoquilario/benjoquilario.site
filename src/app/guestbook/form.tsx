@@ -74,7 +74,7 @@ export default function FormEntry() {
           )}
         />
         <Button
-          className="absolute -top-8 right-0"
+          className="absolute right-0 top-[-31px] h-[34px]"
           type="submit"
           variant="ghost"
           disabled={isSubmitting}
