@@ -64,8 +64,8 @@ export async function saveGuestbookEntry(entry: string) {
 
   if (process.env.NODE_ENV === "production")
     await sendMail({
-      from: "guestbook@rohi.dev",
-      to: "n@rohi.dev",
+      from: "onboarding@resend.dev",
+      to: "benjoquilario@gmail.com",
       subject: "New Guestbook Entry",
       html: `<p>Email: ${email}</p><p>Message: ${body}</p>`,
     })
