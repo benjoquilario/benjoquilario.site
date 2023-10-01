@@ -1,0 +1,104 @@
+---
+title: Understanding the useMemo and useCallback hook in React
+description: A guide that explains how to use useMemo and useCallback hook when to used it and not to used it.
+date: 2023-09-25
+---
+
+## What is React Hooks
+
+Hooks were added to React in version 16.8.
+
+Hooks allow function components to have access to state and other React features. Because of this, class components are generally no longer needed.
+
+Hooks make your work a lot easier and also to avoid a repetitive code over and over again.
+
+We're not going to discuss all react hooks but we're going to understand what `useMemo` and `useCallback` hooks and when to used it.
+
+### The useMemo Hook
+
+The `useMemo` hook is used to memoize a value that is `expensive to compute`. This means that the value is only computed when one of its `dependencies changes`. This can be useful for `optimizing the performance` of a component that needs to `perform a heavy computation` each time it renders.
+
+We really have to understand `useMemo` hook and how it works and when to used it because if you don't use it when you should, it will trigger a performance problem and might have some bugs some unexpected behavior.
+
+First, let talk about the problem of not using a `useMemo`.
+
+Take a look at this code and analyze it.
+
+```jsx
+import { useState } from "react"
+
+const initialItems = new Array(29_999_999)
+  .fill(0)
+  .map((_, index) => ({ id: index, isSelected: index === 29_999_999 }))
+
+const Component = () => {
+  const [count, setCount] = useState(0)
+  const [items] = useState(initialItems)
+
+  const selectedItem = item.find((item) => item.isSelected)
+
+  return (
+    <div>
+      <h1>Count: {count}</h1>
+      <h2>Selected Item: {selectedItem?.id}</h2>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  )
+}
+```
+
+As you can see above of the code we import useState from react and create a initialItems with value of (29_999_999) times and array elements in fill of 0 then we map it then return of object value of id and isSelected.
+isSelected is a boolean value only will it true when the index of array is equal to length of 29_999_999.
+
+It looks like a normal nothing wrong declare useState pass initialItems as initialState and count and setCount with value of 0
+but if you run this code in react application it will cause a problem, try it in your application and try to `spam` by clicking the increment button the Count: `count` is skipping number.
+
+This is wrong and i'ts not a `performant application` should look like, so what is the problem?.
+
+We need to look at our components and understand how react works under the hood and how react treats state updates and how it renders the components.
+
+In our components we have a `count`, `items` and `selectedItem` if we click the button all we're doing is we are calling the function in onClick and increment the count.
+
+We need to understand that to update state means you have to trigger a re-render of the entire components.
+
+The problem is that the `selectedItem` triggering our performance issues if you look of what it does takes the `item` the goes in the array of items to `find` the item `isSelected` but if we take a look at `initialItems` the only thing that make the isSelected value is that to has go throught 29 millions item before isSelected value make true then will return that value
+and this is very expensive operations.
+
+Because we are changing the count we are triggering the components to re-render and causing our selectedItem to recalculated every time the count changes. It causing a huge performance issue we're doing some unnecessery computations on every render.
+
+This is will `useMemo` comes to play.
+
+Do we really need to `useMemo` on items if the items still the same No? because it still the same no matter what happen but if we take a look at our component `selectedItem` there's no way the selectedItem still the same.
+
+```jsx
+import { useState, useMemo } from "react"
+
+const initialItems = new Array(29_999_999)
+  .fill(0)
+  .map((_, index) => ({ id: index, isSelected: index === 29_999_999 }))
+
+const Component = () => {
+  const [count, setCount] = useState(0)
+  const [items] = useState(initialItems)
+
+  const selectedItem = useMemo(
+    item.find((item) => item.isSelected),
+    [item]
+  )
+
+  return (
+    <div>
+      <h1>Count: {count}</h1>
+      <h2>Selected Item: {selectedItem?.id}</h2>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  )
+}
+```
+
+If the items in dependencies array in `useMemo` the selectedItem will re-renders.
+
+Now go back to our applications take a look and try to spam the increment button you will see the difference of the two when we're not using `useMemo` hook.
+No lag, skipping numbers and it's super efficient.
+
+### The useCallback Hook

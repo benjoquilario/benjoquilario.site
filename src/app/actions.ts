@@ -63,13 +63,13 @@ export async function saveGuestbookEntry(entry: string) {
 
   revalidatePath("/guestbook")
 
-  if (process.env.NODE_ENV === "production")
-    await sendMail({
-      from: "guestbook@benjoquilario.vercel.app",
-      to: "benjoquilario@gmail.com",
-      subject: "New Guestbook Entry",
-      html: `<p>Email: ${email}</p><p>Message: ${body}</p>`,
-    })
+  // if (process.env.NODE_ENV === "production")
+  //   await sendMail({
+  //     from: "guestbook@benjoquilario.site",
+  //     to: "benjoquilario@gmail.com",
+  //     subject: "New Guestbook Entry",
+  //     html: `<p>Email: ${email}</p><p>Message: ${body}</p>`,
+  //   })
 
   return { ok: true, data: "Thank you for your message!" }
 }

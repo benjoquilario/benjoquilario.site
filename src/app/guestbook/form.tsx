@@ -17,6 +17,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { saveGuestbookEntry } from "@/app/actions"
 import React, { useEffect } from "react"
+import { useSession } from "next-auth/react"
 
 const guestBookSchema = z.object({
   entry: z.string().min(1, { message: "Message must be atleast 1 character." }),
@@ -32,13 +33,14 @@ export default function FormEntry() {
     },
   })
 
-  const { isSubmitting, isSubmitSuccessful } = form.formState
+  const { reset, formState } = form
+  const { isSubmitting, isSubmitSuccessful } = formState
 
   useEffect(() => {
     if (isSubmitSuccessful) {
-      form.reset()
+      reset()
     }
-  }, [form, isSubmitSuccessful])
+  }, [reset, isSubmitSuccessful])
 
   async function handleOnSubmit(values: Input) {
     const response = await saveGuestbookEntry(values.entry)
@@ -51,7 +53,7 @@ export default function FormEntry() {
       })
 
     return toast({
-      title: "Entry post successful",
+      title: response.data,
     })
   }
 

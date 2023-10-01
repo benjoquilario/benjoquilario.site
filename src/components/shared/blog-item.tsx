@@ -3,40 +3,42 @@ import Link from "next/link"
 import { Calendar, Clock } from "lucide-react"
 import React from "react"
 import { TypographyH3 } from "../typography"
-import type { Article } from "contentlayer/generated"
+import type { Blog } from "contentlayer/generated"
 import { relativeDate } from "@/lib/date"
 
-type ArticleItemProps = {
-  article: Article
+type BlogItemProps = {
+  blog: Blog
 }
 
-const ArticleItem: React.FC<ArticleItemProps> = ({ article }) => {
+const BlogItem: React.FC<BlogItemProps> = ({ blog }) => {
   return (
     <li className="relative -mx-4">
       <Link
-        href={article.slug}
+        href={blog.slug}
         className="flex rounded-sm p-4 transition-colors hover:bg-accent"
       >
         <article className="flex flex-col gap-2 rounded-sm">
           <TypographyH3 className="line-clamp-1 text-lg">
-            {article.title}
+            {blog.title}
           </TypographyH3>
           <span className="line-clamp-2 text-sm text-muted-foreground md:text-base">
-            {article.description}
+            {blog.description}
           </span>
           <div className="flex flex-wrap items-stretch justify-start gap-3">
             <div className="flex shrink-0 items-center gap-2">
               <Calendar className="h-4 w-4" aria-hidden />
               <span className="text-sm text-muted-foreground/90">
-                {relativeDate(article.date)}
+                {relativeDate(blog.date)}
               </span>
             </div>
-            <div className="flex shrink-0 items-center gap-2">
-              <Clock className="h-4 w-4" aria-hidden />
-              <span className="text-sm text-muted-foreground/90">
-                {article.timeToRead} min read
-              </span>
-            </div>
+            {Boolean(blog.readingTime?.minutes) && (
+              <div className="flex shrink-0 items-center gap-2">
+                <Clock className="h-4 w-4" aria-hidden />
+                <span className="text-sm text-muted-foreground/90">
+                  {blog.readingTime?.text}
+                </span>
+              </div>
+            )}
           </div>
         </article>
       </Link>
@@ -44,4 +46,4 @@ const ArticleItem: React.FC<ArticleItemProps> = ({ article }) => {
   )
 }
 
-export default ArticleItem
+export default BlogItem

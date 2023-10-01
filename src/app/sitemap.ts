@@ -1,12 +1,12 @@
 import { type MetadataRoute } from "next"
 
 import { siteConfig } from "@/config/site"
-import { allArticles } from "contentlayer/generated"
+import { allBlogs } from "contentlayer/generated"
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const articles = allArticles.map((article) => ({
-    url: `${siteConfig.url}articles/${article.slugAsParams}`,
-    lastModified: article.date,
+  const blogs = allBlogs.map((blog) => ({
+    url: `${siteConfig.url}articles/${blog.slugAsParams}`,
+    lastModified: blog.date,
   }))
 
   const routes = siteConfig.mainNav.map(({ href }) => ({
@@ -14,5 +14,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: new Date().toISOString(),
   }))
 
-  return [...routes, ...articles]
+  return [...routes, ...blogs]
 }

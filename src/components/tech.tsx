@@ -13,6 +13,7 @@ import {
 } from "react-icons/si"
 import { ExternalLink } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Badge } from "./ui/badge"
 
 const techIcon = [
   {
@@ -44,7 +45,7 @@ const techIcon = [
     icon: SiNodedotjs,
   },
   {
-    techName: "TailwindCSS",
+    techName: "Tailwind",
     icon: SiTailwindcss,
   },
 ]
@@ -63,10 +64,15 @@ const Tech: React.FC<TechProps> = ({ isOpen, setIsOpen }) => {
       <div className="flex flex-col gap-2">
         <div className="grid w-2/3 grid-cols-2 gap-4 md:grid-cols-4">
           {techIcon.map((icon) => (
-            <div className="flex gap-2 text-primary" key={icon.techName}>
-              <icon.icon className="h-6 w-6" />
-              <p className="text-sm text-muted-foreground">{icon.techName}</p>
-            </div>
+            <Badge variant="outline" className="px-2.5 py-2">
+              <div
+                className="flex items-center gap-1 text-primary"
+                key={icon.techName}
+              >
+                <icon.icon className="h-5 w-5" />
+                <p className="text-xs text-foreground/70">{icon.techName}</p>
+              </div>
+            </Badge>
           ))}
         </div>
         <div className="my-3 flex items-start justify-start">

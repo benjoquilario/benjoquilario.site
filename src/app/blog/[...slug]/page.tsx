@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import { Mdx } from "@/components/mdx-components"
-import { allArticles } from "contentlayer/generated"
+import { allBlogs } from "contentlayer/generated"
 import { notFound } from "next/navigation"
 import { Calendar, Clock } from "lucide-react"
 import { relativeDate } from "@/lib/date"
@@ -9,7 +9,7 @@ import Link from "next/link"
 import { siteConfig } from "@/config/site"
 import { env } from "@/env.mjs"
 
-interface ArticleProps {
+interface BlogProps {
   params: {
     slug: string[]
   }
@@ -22,15 +22,15 @@ export async function generateMetadata({
     slug: string[]
   }
 }): Promise<Metadata | undefined> {
-  const article = allArticles.find(
-    (article) => article.slugAsParams === params.slug.join("/")
+  const blog = allBlogs.find(
+    (blog) => blog.slugAsParams === params.slug.join("/")
   )
 
-  if (!article) {
+  if (!blog) {
     return
   }
 
-  const { title, date: publishedTime, description, slugAsParams } = article
+  const { title, date: publishedTime, description, slugAsParams } = blog
 
   return {
     title,
@@ -46,19 +46,19 @@ export async function generateMetadata({
   }
 }
 
-async function getArticleFromParams(params: ArticleProps["params"]) {
+async function getBlogFromParams(params: BlogProps["params"]) {
   const slug = params.slug.join("/")
-  const article = allArticles.find((article) => article.slugAsParams === slug)
+  const blog = allBlogs.find((blog) => blog.slugAsParams === slug)
 
-  if (!article) return null
+  if (!blog) return null
 
-  return article
+  return blog
 }
 
-export default async function ArticlePage({ params }: ArticleProps) {
-  const article = await getArticleFromParams(params)
+export default async function ArticlePage({ params }: BlogProps) {
+  const blog = await getBlogFromParams(params)
 
-  if (!article) notFound()
+  if (!blog) notFound()
 
   return (
     <article className="max-w-none break-words py-6">
@@ -70,27 +70,27 @@ export default async function ArticlePage({ params }: ArticleProps) {
         Back
       </Link>
       <h1 className="my-2 inline-block font-heading text-4xl leading-tight lg:text-5xl">
-        {article.title}
+        {blog.title}
       </h1>
-      {article.description && <p>{article.description}</p>}
+      {blog.description && <p>{blog.description}</p>}
 
       <hr className="my-4" />
       <div className="flex flex-wrap items-stretch justify-start gap-3">
         <div className="flex shrink-0 items-center gap-2">
           <Calendar className="h-4 w-4" aria-hidden />
           <span className="text-sm text-muted-foreground/90">
-            {relativeDate(article.date)}
+            {relativeDate(blog.date)}
           </span>
         </div>
         <div className="flex shrink-0 items-center gap-2">
           <Clock className="h-4 w-4" aria-hidden />
           <span className="text-sm text-muted-foreground/90">
-            {article.timeToRead} min read
+            {blog.readingTime?.text}
           </span>
         </div>
       </div>
       <hr className="my-4" />
-      <Mdx code={article.body.code} />
+      <Mdx code={blog.body.code} />
     </article>
   )
 }

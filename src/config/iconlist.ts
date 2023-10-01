@@ -4,7 +4,13 @@ import { TbBrandGithub } from "react-icons/tb"
 import { AiOutlineLinkedin } from "react-icons/ai"
 import { CgMail } from "react-icons/cg"
 
-const ICONLIST = [
+type ContactLink = {
+  title: string
+  icon: any
+  href: string
+}
+
+const contactLinks: ContactLink[] = [
   {
     title: "Twitter",
     icon: TfiTwitter,
@@ -32,4 +38,4 @@ const ICONLIST = [
   },
 ]
 
-export default ICONLIST
+export default contactLinks

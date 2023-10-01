@@ -48,7 +48,7 @@ const About = () => {
               I&apos;m a self-taught front-end web developer based in Quezon
               City, Philippines.
             </TypographyH2>
-            <p className="text-xs leading-6 text-muted-foreground md:text-[13px]">
+            <p className="text-xs leading-6 text-foreground/80 md:text-[13px]">
               I&apos;ve been coding coding frontend development for over (2)
               years now and done a few freelances. I&apos;m a BSIT undergrad at
               AMA University. I have a passion for front-end development to
@@ -85,7 +85,7 @@ const About = () => {
               by reading documentation and by trying out new stack every month.
             </p>
             <Tech isOpen={isOpen} setIsOpen={setIsOpen} />
-            <p className="text-xs leading-6 text-muted-foreground md:text-[13px]">
+            <p className="text-xs leading-6 text-foreground/80 md:text-[13px]">
               When I&apos;m not coding away on the latest web project, I love
               watching movies, anime and playing games. I&apos;m a huge fan of
               League of Legends, Clash of Clans and Dota2. Breaking Bad and GoT

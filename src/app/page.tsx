@@ -1,5 +1,5 @@
 import Hero from "@/components/section/hero"
-import Articles from "@/components/section/articles"
+import Articles from "@/components/section/blogs"
 import Repositories from "@/components/section/repositories"
 import * as React from "react"
 

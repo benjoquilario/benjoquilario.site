@@ -1,16 +1,17 @@
 import rehypeAutolinkHeadings from "rehype-autolink-headings"
 import rehypeCodeTitles from "rehype-code-titles"
 import rehypeImgSize from "rehype-img-size"
-import rehypePrism from "rehype-prism-plus"
 import rehypeSlug from "rehype-slug"
 import remarkExternalLinks from "remark-external-links"
 import remarkGfm from "remark-gfm"
 import remarkUnwrapImages from "remark-unwrap-images"
 import rehypePrettyCode from "rehype-pretty-code"
 import { defineDocumentType, makeSource } from "contentlayer/source-files"
+import readingTime from "reading-time"
 
 /** @type {import('contentlayer/source-files').ComputedFields} */
 const computedFields = {
+  readingTime: { type: "json", resolve: (doc) => readingTime(doc.body.raw) },
   slug: {
     type: "string",
     resolve: (doc) => `/${doc._raw.flattenedPath}`,
@@ -21,9 +22,9 @@ const computedFields = {
   },
 }
 
-export const Article = defineDocumentType(() => ({
-  name: "Article",
-  filePathPattern: `articles/**/*.mdx`,
+export const Blog = defineDocumentType(() => ({
+  name: "Blog",
+  filePathPattern: `blog/**/*.mdx`,
   contentType: "mdx",
   fields: {
     title: {
@@ -37,16 +38,13 @@ export const Article = defineDocumentType(() => ({
       type: "date",
       required: true,
     },
-    timeToRead: {
-      type: "string",
-    },
   },
   computedFields,
 }))
 
 export default makeSource({
   contentDirPath: "src/content",
-  documentTypes: [Article],
+  documentTypes: [Blog],
   mdx: {
     remarkPlugins: [remarkExternalLinks, remarkGfm, remarkUnwrapImages],
     rehypePlugins: [

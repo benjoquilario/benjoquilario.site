@@ -19,7 +19,7 @@ const Footer = () => {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="text-muted-foreground/80 transition-colors hover:text-muted-foreground/90"
+                  className="text-muted-foreground transition-colors hover:text-primary/90"
                 >
                   {item.title}
                 </Link>
@@ -49,7 +49,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="mt-8 pb-3">
-        <p className="text-sm text-muted-foreground/70 md:text-base">
+        <p className="text-sm text-muted-foreground md:text-base">
           Built by{" "}
           <Link
             className="font-heading font-medium text-primary underline underline-offset-4"
