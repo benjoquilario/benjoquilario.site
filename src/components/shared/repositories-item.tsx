@@ -32,10 +32,10 @@ export default async function RepositoriesItem({
   const repositories = await getRepos(repoName)
 
   return (
-    <li className="relative -mx-4 md:-mx-0">
+    <li className="group relative -mx-4 md:-mx-0">
       <Link
         href={repositories.html_url}
-        className="flex rounded-sm p-4 transition-colors hover:bg-accent"
+        className="flex rounded-sm p-4 transition-colors group-hover:bg-accent"
         target="_blank"
       >
         <article className="flex flex-col gap-2 rounded-sm">
@@ -74,6 +74,15 @@ export default async function RepositoriesItem({
           </div>
         </article>
       </Link>
+      <span className="absolute right-0 top-0 z-50 flex h-8 w-8 -translate-y-1/4 translate-x-1/4 items-center justify-center rounded-full opacity-0 transition-all group-hover:-translate-y-1/3 group-hover:opacity-100">
+        <Link
+          href="/"
+          aria-label={repositories.homepage}
+          className="h-8 rounded-full bg-foreground p-2 text-primary-foreground"
+        >
+          <ExternalLink className="h-4 w-4" />
+        </Link>
+      </span>
     </li>
   )
 }

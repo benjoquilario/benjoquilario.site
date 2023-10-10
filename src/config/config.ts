@@ -5,7 +5,7 @@ import { siteConfig } from "./site"
 export const REPOS = [
   "t3-insider",
   "chatty",
-  "animehi",
+  "animehi-stream",
   "blogfolio",
   "crud-invoice-app",
   "amabank-landing-page",

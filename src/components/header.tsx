@@ -54,12 +54,15 @@ const Header = () => {
   return (
     <header className="mb-6 flex w-full items-center justify-center pb-6">
       <div className="mx-0 flex w-full max-w-5xl items-center justify-between">
-        <Link
-          href="/"
-          className="z-10 font-logo text-3xl font-extrabold md:text-5xl"
-          aria-label="Benjo Quilario - BMQ"
-        >
-          B.
+        <Link href="/" className="block" aria-label="BenJo Quilario">
+          <div className="relative">
+            <span className="border-4 border-primary px-[15px] py-2 font-heading text-lg font-extrabold uppercase md:text-2xl">
+              B
+            </span>
+            <span className="relative ml-[-17px] bg-background font-heading text-lg font-bold md:text-2xl">
+              enJo QuiLario
+            </span>
+          </div>
         </Link>
         <div className="flex h-12 items-center justify-between gap-3">
           <nav aria-label="primary">
