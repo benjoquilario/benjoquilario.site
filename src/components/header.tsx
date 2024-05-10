@@ -56,11 +56,8 @@ const Header = () => {
       <div className="mx-0 flex w-full max-w-5xl items-center justify-between">
         <Link href="/" className="block" aria-label="BenJo Quilario">
           <div className="relative">
-            <span className="border-4 border-primary px-[15px] py-2 font-heading text-lg font-extrabold uppercase md:text-2xl">
-              B
-            </span>
-            <span className="relative ml-[-17px] bg-background font-heading text-lg font-bold md:text-2xl">
-              enJo QuiLario
+            <span className="font-heading text-5xl font-extrabold uppercase">
+              B.
             </span>
           </div>
         </Link>
