@@ -8,9 +8,9 @@ import {
 } from "@/components/ui/tooltip"
 import Link from "next/link"
 import ContactForm from "./form"
-import { AlertCircle } from "lucide-react"
+// import { AlertCircle } from "lucide-react"
 
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+// import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 
 export default function Contact() {
   return (
@@ -49,14 +49,14 @@ export default function Contact() {
         </div>
       </div>
       <ContactForm />
-      <Alert className="mt-4" variant="destructive">
+      {/* <Alert className="mt-4" variant="destructive">
         <AlertCircle className="h-4 w-4" />
         <AlertTitle>Warning</AlertTitle>
         <AlertDescription>
           You can&apos;t send me message yet!. The benjoquilario.vercel.app is
           not valid domain.
         </AlertDescription>
-      </Alert>
+      </Alert> */}
     </>
   )
 }

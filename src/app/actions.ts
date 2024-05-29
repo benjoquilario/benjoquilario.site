@@ -16,7 +16,7 @@ import {
   CreateEmailResponse,
 } from "resend/build/src/emails/interfaces"
 
-async function sendMail(options: CreateEmailOptions) {
+export async function sendMail(options: CreateEmailOptions) {
   const data = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
@@ -63,13 +63,13 @@ export async function saveGuestbookEntry(entry: string) {
 
   revalidatePath("/guestbook")
 
-  // if (process.env.NODE_ENV === "production")
-  //   await sendMail({
-  //     from: "guestbook@benjoquilario.site",
-  //     to: "benjoquilario@gmail.com",
-  //     subject: "New Guestbook Entry",
-  //     html: `<p>Email: ${email}</p><p>Message: ${body}</p>`,
-  //   })
+  if (process.env.NODE_ENV === "production")
+    await sendMail({
+      from: "guestbook@benjoquilario.site",
+      to: "benjoquilario@gmail.com",
+      subject: "New Guestbook Entry",
+      html: `<p>Email: ${email}</p><p>Message: ${body}</p>`,
+    })
 
   return { ok: true, data: "Thank you for your message!" }
 }

@@ -17,6 +17,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { siteConfig } from "@/config/site"
 import { useEffect } from "react"
 import { toast } from "@/components/ui/use-toast"
+import { sendMail } from "../actions"
 
 export const contactSchema = z.object({
   messageBy: z
@@ -55,6 +56,13 @@ const ContactForm = () => {
   }, [setFocus])
 
   async function handleOnSubmit(data: ContactForm) {
+    await sendMail({
+      from: "contact@benjoquilario.site",
+      to: "benjoquilario@gmail.com",
+      subject: `${data.messageBy} message you`,
+      html: `<p>Email: ${data.emailAddress}</p><p>Message: ${data.message}</p>`,
+    })
+
     return toast({
       title: "You submitted the following values:",
       description: (
