@@ -1,4 +1,5 @@
 "use client"
+
 import React from "react"
 import Image from "next/image"
 import { AspectRatio } from "@/components/ui/aspect-ratio"
@@ -9,13 +10,15 @@ const Hero = () => {
     <section className="mb-12 flex flex-col">
       <div className="flex w-full flex-col-reverse items-center gap-4">
         <div className="flex w-full flex-col">
-          <h1 className="mt-2 scroll-m-20 font-heading text-4xl font-extrabold tracking-tight md:text-5xl">
+          <h1 className="text-pretty bg-gradient-stop mt-2 scroll-m-20 bg-gradient-to-br from-foreground via-foreground via-30% to-foreground/30 bg-clip-text font-heading text-4xl font-extrabold tracking-tighter text-transparent md:text-5xl">
             {siteConfig.name}
           </h1>
-          <p className="mt-2 text-xs !leading-6 text-muted-foreground md:text-sm">
+          <p className="text-pretty bg-gradient-stop mt-2 bg-gradient-to-br from-foreground/70 via-foreground/70 via-40% to-foreground/70 bg-clip-text text-xs !leading-6 text-transparent md:text-base">
             Hey! How nice of you to look at my personal site,{" "}
-            <span className="font-bold text-primary">Thank you!</span> I am
-            Frontend developer that specializes at frontend integration,
+            <span className="text-pretty bg-gradient-stop via-foreground/7 bg-gradient-to-br from-foreground/70 via-foreground/70 via-40% to-foreground/70 bg-clip-text font-bold text-transparent">
+              Thank you!
+            </span>{" "}
+            I am Frontend developer that specializes at frontend integration,
             recently found myself studying backend apis and UX/UI Design too.
           </p>
         </div>

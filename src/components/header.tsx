@@ -8,6 +8,7 @@ import ThemeToggle from "@/components/theme-toggle"
 import { Toggle } from "@/components/ui/toggle"
 import { useSelectedLayoutSegment } from "next/navigation"
 import Link from "next/link"
+import { buttonVariants } from "./ui/button"
 
 export const navList = [
   {
@@ -56,7 +57,7 @@ const Header = () => {
       <div className="mx-0 flex w-full max-w-5xl items-center justify-between">
         <Link href="/" className="block" aria-label="BenJo Quilario">
           <div className="relative">
-            <span className="font-heading text-5xl font-extrabold uppercase">
+            <span className="text-pretty bg-gradient-stop bg-gradient-to-br from-foreground via-foreground via-30% to-foreground/30 bg-clip-text font-heading text-5xl font-extrabold uppercase">
               B.
             </span>
           </div>
@@ -65,17 +66,20 @@ const Header = () => {
           <nav aria-label="primary">
             {/* <button className="md:hidden absolute top-7 right-6 flex flex-col justify-center items-center bg-transition z-[999]"></button> */}
             <div className="relative hidden md:block">
-              <ul className="flex gap-3">
+              <ul className="flex items-center">
                 {navList.map((item) => (
                   <li key={item.href}>
                     <Link
                       href={item.href}
-                      className={cn(
-                        "text-sm transition-colors",
-                        item.href.startsWith(`/${segment}`)
-                          ? "font-medium text-foreground hover:text-foreground"
-                          : "font-normal text-foreground/60 hover:text-foreground/80"
-                      )}
+                      className={buttonVariants({
+                        variant: "linkHover",
+                        size: "sm",
+                        className: `h-8 px-2 ${
+                          item.href.startsWith(`/${segment}`)
+                            ? "font-medium text-foreground hover:text-foreground"
+                            : "font-normal text-foreground/60 hover:text-foreground/80"
+                        }`,
+                      })}
                     >
                       {item.title}
                     </Link>

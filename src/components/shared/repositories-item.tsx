@@ -48,7 +48,7 @@ export default async function RepositoriesItem({
             </div>
           </div>
 
-          <p className="line-clamp-2 text-sm text-muted-foreground">
+          <p className="text-pretty bg-gradient-stop mt-2 line-clamp-2 bg-gradient-to-br from-foreground/70 via-foreground/70 via-40% to-foreground/70 bg-clip-text text-xs !leading-6 text-transparent md:text-base">
             {repositories.description}
           </p>
           <div className="flex gap-1">
@@ -74,14 +74,15 @@ export default async function RepositoriesItem({
           </div>
         </article>
       </Link>
-      <span className="absolute right-0 top-0 z-50 flex h-8 w-8 -translate-y-1/4 translate-x-1/4 items-center justify-center rounded-full opacity-0 transition-all group-hover:-translate-y-1/3 group-hover:opacity-100">
-        <Link
-          href="/"
+      <span className="absolute right-0 top-0 z-50 flex h-8 w-8 -translate-y-1/4 items-center justify-center rounded-full opacity-0 transition-all group-hover:-translate-y-1/3 group-hover:opacity-100">
+        <a
+          target="_blank"
+          href={`${repositories.homepage}`}
           aria-label={repositories.homepage}
           className="h-8 rounded-full bg-foreground p-2 text-primary-foreground"
         >
           <ExternalLink className="h-4 w-4" />
-        </Link>
+        </a>
       </span>
     </li>
   )

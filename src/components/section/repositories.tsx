@@ -1,6 +1,8 @@
+'use clients'
+
 import RepositoriesItem from "@/components/shared/repositories-item"
 import { REPOS } from "@/config/config"
-import { TypographyH2 } from "../typography"
+import { TypographyH2 } from "@/components/typography"
 
 import * as React from "react"
 

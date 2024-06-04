@@ -3,10 +3,10 @@ import { RiTwitterXLine } from "react-icons/ri"
 import { siteConfig } from "./site"
 
 export const REPOS = [
-  "t3-insider",
-  "chatty",
   "animehi-stream",
+  "chatty",
   "blogfolio",
+  "t3-insider",
   "crud-invoice-app",
   "amabank-landing-page",
 ]

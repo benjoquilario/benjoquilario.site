@@ -1,4 +1,5 @@
 "use client"
+
 import Link from "next/link"
 import { Calendar, Clock } from "lucide-react"
 import React from "react"
@@ -21,7 +22,7 @@ const BlogItem: React.FC<BlogItemProps> = ({ blog }) => {
           <TypographyH3 className="line-clamp-1 text-lg">
             {blog.title}
           </TypographyH3>
-          <span className="line-clamp-2 text-sm text-muted-foreground md:text-base">
+          <span className="text-pretty bg-gradient-stop mt-2 line-clamp-2 bg-gradient-to-br from-foreground/70 via-foreground/70 via-40% to-foreground/70 bg-clip-text text-sm !leading-6 text-transparent md:text-base">
             {blog.description}
           </span>
           <div className="flex flex-wrap items-stretch justify-start gap-3">

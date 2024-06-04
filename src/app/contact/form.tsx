@@ -17,7 +17,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { siteConfig } from "@/config/site"
 import { useEffect } from "react"
 import { toast } from "@/components/ui/use-toast"
-import { sendMail } from "../actions"
+import { sendEmail, sendMail } from "../actions"
 
 export const contactSchema = z.object({
   messageBy: z
@@ -28,7 +28,7 @@ export const contactSchema = z.object({
     .email({ message: "Email must be a valid email address." }),
   message: z
     .string()
-    .min(30, { message: "Message must be atleast 30 characters." }),
+    .min(30, { message: "Message must be atleast 20 characters." }),
 })
 
 type ContactForm = z.infer<typeof contactSchema>
@@ -56,20 +56,14 @@ const ContactForm = () => {
   }, [setFocus])
 
   async function handleOnSubmit(data: ContactForm) {
-    await sendMail({
-      from: "contact@benjoquilario.site",
-      to: "benjoquilario@gmail.com",
-      subject: `${data.messageBy} message you`,
-      html: `<p>Email: ${data.emailAddress}</p><p>Message: ${data.message}</p>`,
-    })
+    const { emailAddress, message, messageBy } = data
+
+    const response = await sendEmail({ emailAddress, body: message, messageBy })
+
+    if (!response.ok) return toast({ title: response.data })
 
     return toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
+      title: response.data,
     })
   }
 

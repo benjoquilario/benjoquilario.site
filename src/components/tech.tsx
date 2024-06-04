@@ -64,11 +64,12 @@ const Tech: React.FC<TechProps> = ({ isOpen, setIsOpen }) => {
       <div className="flex flex-col gap-2">
         <div className="grid w-2/3 grid-cols-2 gap-4 md:grid-cols-4">
           {techIcon.map((icon) => (
-            <Badge variant="outline" className="px-2.5 py-2">
-              <div
-                className="flex items-center gap-1 text-primary"
-                key={icon.techName}
-              >
+            <Badge
+              key={icon.techName}
+              variant="outline"
+              className="px-2.5 py-2"
+            >
+              <div className="flex items-center gap-1 text-primary">
                 <icon.icon className="h-5 w-5" />
                 <p className="text-xs text-foreground/70">{icon.techName}</p>
               </div>
@@ -77,7 +78,7 @@ const Tech: React.FC<TechProps> = ({ isOpen, setIsOpen }) => {
         </div>
         <div className="my-3 flex items-start justify-start">
           <button
-            className="flex items-center text-sm"
+            className="flex items-center text-sm active:scale-[.98]"
             onClick={() => setIsOpen(!isOpen)}
           >
             See my full arsenal

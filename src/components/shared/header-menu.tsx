@@ -3,6 +3,7 @@
 import * as React from "react"
 import { navList as lists } from "@/components/header"
 import { cn } from "@/lib/utils"
+import Link from "next/link"
 
 type HeaderMenuProps = {
   className: string
@@ -20,12 +21,12 @@ const HeaderMenu: React.FC<HeaderMenuProps> = ({ className }) => {
         <ul className="text-left">
           {lists.map((list) => (
             <li key={list.href} className="mb-2">
-              <a
+              <Link
                 href={list.href}
                 className="relative text-sm text-muted-foreground/60 transition-colors hover:text-muted-foreground/80"
               >
                 {list.title}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>

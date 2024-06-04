@@ -5,21 +5,27 @@ import { navList as lists } from "@/components/header"
 import { SocialLinks as socialLinks } from "@/config/config"
 import { siteConfig } from "@/config/site"
 import Link from "next/link"
+import { TypographyH3 } from "./typography"
+import { buttonVariants } from "./ui/button"
 
 const Footer = () => {
   return (
     <footer className="mt-12">
       <div className="mx-auto flex w-full max-w-5xl items-center justify-between border-t border-border pt-12">
         <div>
-          <h4 className="mb-3 scroll-m-20 font-heading text-lg font-medium uppercase tracking-tight">
+          <TypographyH3 className="mb-3 scroll-m-20 font-heading text-lg font-medium uppercase tracking-tight">
             Other Pages
-          </h4>
-          <ul className="flex flex-col gap-3">
+          </TypographyH3>
+          <ul className="flex flex-col">
             {siteConfig.otherNav.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="text-muted-foreground transition-colors hover:text-primary/90"
+                  className={buttonVariants({
+                    variant: "linkHover",
+                    className:
+                      "px-0 text-primary/70 transition-colors hover:text-primary/90",
+                  })}
                 >
                   {item.title}
                 </Link>
@@ -28,15 +34,15 @@ const Footer = () => {
           </ul>
         </div>
         <div>
-          <h4 className="mb-3 scroll-m-20 font-heading text-lg font-medium uppercase tracking-tight">
+          <TypographyH3 className="mb-3 scroll-m-20 font-heading text-lg font-medium uppercase tracking-tight">
             Social Links
-          </h4>
-          <ul className="flex flex-col items-start gap-3">
+          </TypographyH3>
+          <ul className="flex flex-col items-start">
             {socialLinks.map(({ title, path, icon: Icon }) => (
               <li key={title}>
                 <Link
                   href={path}
-                  className="flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-primary/90"
+                  className="flex items-center  gap-1 py-2 text-sm text-muted-foreground transition-colors hover:text-primary/90"
                   target="_blank"
                   rel="noreferrer"
                 >

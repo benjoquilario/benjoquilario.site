@@ -1,9 +1,11 @@
+"use client"
+
 import * as React from "react"
 import BlogItem from "@/components/shared/blog-item"
-import { TypographyH2 } from "../typography"
+import { TypographyH2 } from "@/components/typography"
 import { allBlogs } from "contentlayer/generated"
 
-const Blogs = () => {
+export default function Blogs() {
   return (
     <section className="mb-12 flex flex-col items-start justify-start">
       <TypographyH2>
@@ -18,5 +20,3 @@ const Blogs = () => {
     </section>
   )
 }
-
-export default Blogs

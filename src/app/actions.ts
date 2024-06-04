@@ -30,6 +30,39 @@ export async function sendMail(options: CreateEmailOptions) {
   return response as CreateEmailResponse
 }
 
+interface ISendEmail {
+  emailAddress: string
+  body: string
+  messageBy: string
+}
+
+export async function sendEmail({ emailAddress, body, messageBy }: ISendEmail) {
+  const ratelimit = new Ratelimit({
+    redis: kv,
+    limiter: Ratelimit.fixedWindow(2, "1 m"),
+  })
+
+  const { success, reset } = await ratelimit.limit(emailAddress)
+
+  if (!success) {
+    const retryAfterSeconds = Math.ceil((reset - Date.now()) / 1000)
+    return {
+      ok: false,
+      data: `Try again in ${retryAfterSeconds} seconds!`,
+    }
+  }
+
+  if (process.env.NODE_ENV === "production")
+    await sendMail({
+      from: "guestbook@benjoquilario.site",
+      to: "benjoquilario@gmail.com",
+      subject: `${messageBy} message you!`,
+      html: `<p>Email: ${emailAddress}</p><p>Message: ${body}</p>`,
+    })
+
+  return { ok: true, data: "Thank you for your message!" }
+}
+
 export async function saveGuestbookEntry(entry: string) {
   const session = await getSession()
   const sessionValidations = sessionAuth.parse(session?.user)

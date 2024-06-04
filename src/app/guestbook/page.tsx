@@ -35,9 +35,9 @@ export default async function GuestBook() {
 
   return (
     <div className="space-y-4">
-      <h1 className="mb-8 text-3xl font-bold tracking-tighter">
+      <TypographyH2 className="mb-8 text-3xl font-bold tracking-tighter">
         <span className="text-4xl">S</span>ign my guestbook
-      </h1>
+      </TypographyH2>
       {session?.user ? (
         <>
           <FormEntry />
