@@ -19,10 +19,10 @@ const BlogItem: React.FC<BlogItemProps> = ({ blog }) => {
         className="flex rounded-sm p-4 transition-colors hover:bg-accent"
       >
         <article className="flex flex-col gap-2 rounded-sm">
-          <TypographyH3 className="line-clamp-1 text-lg">
+          <TypographyH3 className="line-clamp-2 text-lg">
             {blog.title}
           </TypographyH3>
-          <span className="text-pretty bg-gradient-stop mt-2 line-clamp-2 bg-gradient-to-br from-foreground/70 via-foreground/70 via-40% to-foreground/70 bg-clip-text text-sm !leading-6 text-transparent md:text-base">
+          <span className="text-pretty bg-gradient-stop mt-2 line-clamp-3 bg-gradient-to-br from-foreground/70 via-foreground/70 via-40% to-foreground/70 bg-clip-text text-sm !leading-6 text-transparent md:text-base">
             {blog.description}
           </span>
           <div className="flex flex-wrap items-stretch justify-start gap-3">

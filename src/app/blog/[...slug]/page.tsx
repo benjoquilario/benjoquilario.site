@@ -40,7 +40,7 @@ export async function generateMetadata({
       description,
       type: "article",
       publishedTime,
-      url: `${env.NEXT_PUBLIC_APP_URL}/articles/${slugAsParams}`,
+      url: `${env.NEXT_PUBLIC_APP_URL}/blog/${slugAsParams}`,
     },
     publisher: `${siteConfig.name}`,
   }

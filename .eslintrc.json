@@ -4,7 +4,9 @@
   "extends": [
     "next/core-web-vitals",
     "prettier",
-    "plugin:tailwindcss/recommended"
+    "plugin:tailwindcss/recommended",
+
+    ""
   ],
   "plugins": ["tailwindcss"],
   "rules": {
@@ -19,7 +21,7 @@
       "config": "tailwind.config.js"
     },
     "next": {
-      "rootDir": true
+      "rootDir": ["./"]
     }
   },
   "overrides": [

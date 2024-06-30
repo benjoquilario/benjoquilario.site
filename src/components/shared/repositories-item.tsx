@@ -33,11 +33,7 @@ export default async function RepositoriesItem({
 
   return (
     <li className="group relative -mx-4 md:-mx-0">
-      <Link
-        href={repositories.html_url}
-        className="flex rounded-sm p-4 transition-colors group-hover:bg-accent"
-        target="_blank"
-      >
+      <div className="flex rounded-sm p-4 transition-colors group-hover:bg-accent">
         <article className="flex flex-col gap-2 rounded-sm">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
@@ -48,7 +44,7 @@ export default async function RepositoriesItem({
             </div>
           </div>
 
-          <p className="text-pretty bg-gradient-stop mt-2 line-clamp-2 bg-gradient-to-br from-foreground/70 via-foreground/70 via-40% to-foreground/70 bg-clip-text text-xs !leading-6 text-transparent md:text-base">
+          <p className="text-pretty bg-gradient-stop mt-2 line-clamp-3 bg-gradient-to-br from-foreground/70 via-foreground/70 via-40% to-foreground/70 bg-clip-text text-xs !leading-6 text-transparent md:text-base">
             {repositories.description}
           </p>
           <div className="flex gap-1">
@@ -72,13 +68,21 @@ export default async function RepositoriesItem({
               <span>{repositories.forks_count}</span>
             </div>
           </div>
+          <a
+            target="_blank"
+            href={repositories.homepage}
+            className="mt-2 flex items-center gap-1 text-foreground/80 hover:text-foreground"
+          >
+            <ExternalLink className="h-4 w-4" />
+            <span className="text-sm">{repositories.homepage}</span>
+          </a>
         </article>
-      </Link>
+      </div>
       <span className="absolute right-0 top-0 z-50 flex h-8 w-8 -translate-y-1/4 items-center justify-center rounded-full opacity-0 transition-all group-hover:-translate-y-1/3 group-hover:opacity-100">
         <a
           target="_blank"
-          href={`${repositories.homepage}`}
-          aria-label={repositories.homepage}
+          href={repositories.html_url}
+          aria-label={repositories.html_url}
           className="h-8 rounded-full bg-foreground p-2 text-primary-foreground"
         >
           <ExternalLink className="h-4 w-4" />
