@@ -7,7 +7,7 @@ export const REPOS = [
   "t3-insider",
   "chatty",
   "blogfolio",
-  "crud-invoice-app",
+  "just-work",
   "amabank-landing-page",
 ]
 
