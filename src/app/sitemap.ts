@@ -11,7 +11,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const routes = siteConfig.mainNav.map(({ href }) => ({
     url: `${siteConfig.url}${href}`,
-    lastModified: new Date().toISOString(),
+    lastModified: new Date().toISOString().split("T")[0],
   }))
 
   return [...routes, ...blogs]

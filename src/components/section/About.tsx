@@ -1,6 +1,5 @@
 "use client"
 
-
 import * as React from "react"
 import { TypographyH2, TypographyH3 } from "@/components/typography"
 import Tech from "@/components/tech"
@@ -53,9 +52,9 @@ const About = () => {
             </TypographyH3>
             <p className="text-pretty bg-gradient-stop mt-2 bg-gradient-to-br from-foreground/70 via-foreground/70 via-40% to-foreground/70 bg-clip-text text-xs !leading-6 text-transparent md:text-base">
               I&apos;ve been coding coding frontend development for over (2)
-              years now and done a few freelances. I&apos;m a BSIT undergrad at
-              AMA University. I have a passion for front-end development to
-              create the best possible user experience, recently found myself
+              years now and done a few freelances. I&apos;m currently studying
+              BSIT at AMA University. I have a passion for front-end development
+              to create the best possible user experience, recently found myself
               studying backend apis and UX/UI Design too. <br />
               <br />
               My favorite stack right now is{" "}
