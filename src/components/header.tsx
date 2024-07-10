@@ -65,7 +65,7 @@ const Header = () => {
         <div className="flex h-12 items-center justify-between gap-3">
           <nav aria-label="primary">
             {/* <button className="md:hidden absolute top-7 right-6 flex flex-col justify-center items-center bg-transition z-[999]"></button> */}
-            <div className="relative hidden md:block">
+            <div className="relative">
               <ul className="flex items-center">
                 {navList.map((item) => (
                   <li key={item.href}>
@@ -74,7 +74,7 @@ const Header = () => {
                       className={buttonVariants({
                         variant: "linkHover",
                         size: "sm",
-                        className: `h-8 px-2 ${
+                        className: `h-8 px-1 text-xs font-medium lowercase md:px-2 md:text-sm ${
                           item.href.startsWith(`/${segment}`)
                             ? "font-medium text-foreground hover:text-foreground"
                             : "font-normal text-foreground/60 hover:text-foreground/80"
@@ -88,22 +88,16 @@ const Header = () => {
               </ul>
             </div>
           </nav>
-          <HeaderMenu
-            className={cn(
-              isOpen
-                ? "visible right-0 top-[64px] opacity-100"
-                : "invisible -top-4 right-[-1000px] opacity-0"
-            )}
-          />
+
           <div className="flex gap-2">
             <ThemeToggle />
-            <Toggle
+            {/* <Toggle
               onClick={() => setIsOpen(!isOpen)}
               variant="outline"
               className="block md:hidden"
             >
               <Menu className="h-[1.5rem] w-[1.3rem]" />
-            </Toggle>
+            </Toggle> */}
           </div>
         </div>
       </div>
