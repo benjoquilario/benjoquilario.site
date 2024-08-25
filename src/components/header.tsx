@@ -54,7 +54,7 @@ const Header = () => {
 
   return (
     <header className="mb-6 flex w-full items-center justify-center pb-6">
-      <div className="mx-0 flex w-full max-w-5xl items-center justify-between">
+      <div className="mx-0 flex w-full max-w-5xl flex-col items-start justify-between">
         <Link href="/" className="block" aria-label="BenJo Quilario">
           <div className="relative">
             <span className="text-pretty bg-gradient-stop bg-gradient-to-br from-foreground via-foreground via-30% to-foreground/30 bg-clip-text font-heading text-5xl font-extrabold uppercase">
@@ -62,11 +62,11 @@ const Header = () => {
             </span>
           </div>
         </Link>
-        <div className="flex h-12 items-center justify-between gap-3">
+        <div className="flex h-12 items-center justify-between space-x-2">
           <nav aria-label="primary">
             {/* <button className="md:hidden absolute top-7 right-6 flex flex-col justify-center items-center bg-transition z-[999]"></button> */}
             <div className="relative">
-              <ul className="flex items-center">
+              <ul className="flex items-center space-x-2">
                 {navList.map((item) => (
                   <li key={item.href}>
                     <Link

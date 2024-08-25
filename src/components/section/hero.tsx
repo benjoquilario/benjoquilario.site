@@ -12,7 +12,7 @@ const Hero = () => {
           <h1 className="text-pretty bg-gradient-stop mt-2 scroll-m-20 bg-gradient-to-br from-foreground via-foreground via-30% to-foreground/30 bg-clip-text font-heading text-4xl font-extrabold tracking-tighter text-transparent md:text-5xl">
             hey, I&apos;m benjo 👋
           </h1>
-          <p className="text-pretty bg-gradient-stop mt-2 bg-gradient-to-br from-foreground/70 via-foreground/70 via-40% to-foreground/70 bg-clip-text text-xs !leading-6 text-transparent md:text-base">
+          <p className="mt-2 text-xs text-foreground/80 md:text-base">
             I am Frontend developer that specializes at frontend integration,
             recently found myself studying backend apis and UX/UI Design too.
           </p>

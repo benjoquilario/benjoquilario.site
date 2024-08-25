@@ -9,7 +9,7 @@ export function TypographyH2({ className, children }: TypographyProps) {
   return (
     <h2
       className={cn(
-        "text-pretty bg-gradient-stop scroll-m-20 bg-gradient-to-br from-foreground via-foreground via-30% to-foreground/30 bg-clip-text font-heading text-3xl font-semibold tracking-tighter text-transparent",
+        "text-pretty bg-gradient-stop scroll-m-20 bg-gradient-to-br from-foreground via-foreground via-30% to-foreground/30 bg-clip-text font-heading text-2xl font-semibold tracking-tighter text-transparent md:text-3xl",
         className
       )}
     >

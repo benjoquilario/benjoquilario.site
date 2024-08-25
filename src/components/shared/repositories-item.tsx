@@ -44,7 +44,7 @@ export default async function RepositoriesItem({
             </div>
           </div>
 
-          <p className="text-pretty bg-gradient-stop mt-2 line-clamp-3 bg-gradient-to-br from-foreground/70 via-foreground/70 via-40% to-foreground/70 bg-clip-text text-xs !leading-6 text-transparent md:text-base">
+          <p className="mt-2 line-clamp-3 text-xs text-foreground/80 md:text-base">
             {repositories.description}
           </p>
           <div className="flex gap-1">
