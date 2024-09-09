@@ -22,7 +22,7 @@ const BlogItem: React.FC<BlogItemProps> = ({ blog }) => {
           <TypographyH3 className="line-clamp-2 text-lg">
             {blog.title}
           </TypographyH3>
-          <span className="mt-2 line-clamp-3 text-xs text-foreground/80 md:text-base">
+          <span className="mt-2 line-clamp-3 text-sm text-foreground/80 md:text-base">
             {blog.description}
           </span>
           <div className="flex flex-wrap items-stretch justify-start gap-3">

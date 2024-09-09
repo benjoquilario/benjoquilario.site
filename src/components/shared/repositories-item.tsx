@@ -44,7 +44,7 @@ export default async function RepositoriesItem({
             </div>
           </div>
 
-          <p className="mt-2 line-clamp-3 text-xs text-foreground/80 md:text-base">
+          <p className="mt-2 line-clamp-3 text-sm text-foreground/80 md:text-base">
             {repositories.description}
           </p>
           <div className="flex gap-1">
