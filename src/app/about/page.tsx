@@ -43,7 +43,7 @@ const About = () => {
           bout me.
         </TypographyH3>
         <div className="flex w-full flex-col gap-4">
-          <div className="space-y-5 text-sm text-foreground/80 md:text-[15px]">
+          <div className="space-y-5 text-sm leading-6 text-foreground md:text-[15px]">
             <p>
               I&apos;m a self-taught front-end web developer based in Quezon
               City, Philippines.
