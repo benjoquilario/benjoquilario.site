@@ -1,6 +1,6 @@
 import { Metadata } from "next"
 import "@/styles/globals.css"
-import { Inter as FontSans, Oswald } from "next/font/google"
+import { Oswald } from "next/font/google"
 import localFont from "next/font/local"
 import Header from "@/components/header"
 import { cn } from "@/lib/utils"
@@ -10,19 +10,15 @@ import { siteConfig } from "@/config/site"
 import Footer from "@/components/site-footer"
 import { Toaster } from "@/components/ui/toaster"
 
-const fontSans = FontSans({
-  subsets: ["latin"],
-  variable: "--font-sans",
-})
-
 const fontLogo = Oswald({
   subsets: ["latin"],
   variable: "--font-oswald",
 })
 
-const fontHeading = localFont({
-  src: "../assets/fonts/CalSans-SemiBold.woff2",
-  variable: "--font-heading",
+const fontSans = localFont({
+  src: "../assets/fonts/GeistVF.woff",
+  variable: "--font-sans",
+  weight: "100 900",
 })
 
 export const metadata: Metadata = {
@@ -74,12 +70,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={cn(
-          "min-h-screen font-sans antialiased",
-          fontSans.variable,
-          fontHeading.variable,
-          fontLogo.variable
-        )}
+        className={`${fontSans.variable} ${fontLogo.variable} min-h-screen font-sans antialiased`}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="mx-auto max-w-3xl p-4">

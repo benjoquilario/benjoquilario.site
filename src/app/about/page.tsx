@@ -1,7 +1,11 @@
 "use client"
 import type { Metadata } from "next"
 import * as React from "react"
-import { TypographyH2, TypographyH3 } from "@/components/typography"
+import {
+  TypographyH2,
+  TypographyH3,
+  TypographyP,
+} from "@/components/typography"
 import Tech from "@/components/tech"
 import SkillSetModal from "@/components/skill-set-modal"
 import useClickOutside from "@/hooks/useClickOutside"
@@ -44,28 +48,28 @@ const About = () => {
         </TypographyH3>
         <div className="flex w-full flex-col gap-4">
           <div className="space-y-5 text-sm leading-6 text-foreground md:text-[15px]">
-            <p>
-              I&apos;m a self-taught front-end web developer based in Quezon
+            <TypographyP className="text-sm leading-7 md:text-[15px] ">
+              I&apos;m a passionate front-end web developer based in Quezon
               City, Philippines.
-            </p>
-            <p>
+            </TypographyP>
+            <TypographyP className="text-sm leading-7 text-foreground/90 md:text-[15px]">
               I&apos;ve been coding frontend development for over (3) years now
               and done a few freelances. I&apos;m currently a BSIT 3rd yr
               student at AMA University. I have a passion for front-end
               development to create the best possible user experience, recently
               found myself studying backend apis and UX/UI Design too.
-            </p>
-            <p>
+            </TypographyP>
+            <TypographyP className="text-sm leading-7 text-foreground/90 md:text-[15px]">
               Since technology never stops growing. I am always looking for ways
               to improve my skills and stay up-to-date with the latest
               developments in the field.
-            </p>
+            </TypographyP>
 
-            <p>
+            <TypographyP className="text-sm leading-7 text-foreground/90 md:text-[15px]">
               Outside of programming, I have a diverse set of hobbies that
               include:
-            </p>
-            <ul className="ml-2 list-disc space-y-2 pl-3">
+            </TypographyP>
+            <ul className="my-6 ml-6 list-disc [&>li]:mt-2">
               <li>I love watching movies, anime and playing games</li>
               <li>
                 I drink a lot during parties/celebrations and I like getting
@@ -73,28 +77,28 @@ const About = () => {
               </li>
               <li>Gym/Working Out</li>
             </ul>
-            <p>
+            <TypographyP className="text-sm leading-7 text-foreground/90 md:text-[15px]">
               If you happen to be in the same city I reside in (Novaliches,
               Quezon City), perhaps we could meet up. We could:
-            </p>
-            <ul className="ml-2 list-disc space-y-2 pl-3">
+            </TypographyP>
+            <ul className="my-6 ml-6 list-disc [&>li]:mt-2">
               <li>Share a coffee</li>
               <li>Discuss coding</li>
               <li>Workout/Gym Together</li>
               <li>Watch Anime/Movies with me</li>
             </ul>
-            <p>
+            <TypographyP>
               I am comfortable working independently or as part of a team, and I
               am always ready to take on new challenges.
-            </p>
-            <p>
+            </TypographyP>
+            <TypographyP>
               It&apos;s always great to connect with like-minded individuals and
               share our passions.
-            </p>
+            </TypographyP>
           </div>
         </div>
         <div className="mt-6 block">
-          <TypographyH3 className="mb-3 text-2xl">
+          <TypographyH3 className="mb-3 text-2xl font-bold">
             <span className="text-4xl">W</span>
             ork Experience.
           </TypographyH3>
@@ -122,7 +126,7 @@ const About = () => {
         </div>
 
         <div className="mt-6 block">
-          <TypographyH3 className="mb-3 text-2xl">
+          <TypographyH3 className="mb-3 text-2xl font-bold">
             <span className="text-4xl">E</span>
             ducation.
           </TypographyH3>

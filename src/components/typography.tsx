@@ -30,3 +30,11 @@ export function TypographyH3({ className, children }: TypographyProps) {
     </h3>
   )
 }
+
+export function TypographyP({ className, children }: TypographyProps) {
+  return (
+    <p className={cn("leading-7 [&:not(:first-child)]:mt-6", className)}>
+      {children}
+    </p>
+  )
+}

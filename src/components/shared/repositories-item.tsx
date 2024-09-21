@@ -2,7 +2,11 @@ import Link from "next/link"
 import { Book, GitFork, Star, GithubIcon, ExternalLink } from "lucide-react"
 import React from "react"
 import { Badge } from "@/components/ui/badge"
-import { TypographyH3 } from "@/components/typography"
+import {
+  TypographyH2,
+  TypographyH3,
+  TypographyP,
+} from "@/components/typography"
 
 async function getRepos(repo: string) {
   const res = await fetch(
@@ -38,17 +42,18 @@ export default async function RepositoriesItem({
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Book className="h-6 w-6 shrink-0" aria-hidden="true" />
-              <TypographyH3 className="text-base lowercase">
+              <TypographyH3 className="text-base font-bold lowercase md:text-lg">
                 {repositories.name}
               </TypographyH3>
             </div>
           </div>
 
-          <p className="mt-2 line-clamp-3 text-sm text-foreground/80 md:text-base">
+          <TypographyP className="mt-2 line-clamp-3 text-sm leading-7 text-foreground/90 md:text-[15px]">
             {repositories.description}
-          </p>
+          </TypographyP>
+
           <div className="flex gap-1">
-            {repositories.topics.slice(0, 3).map((topic: string) => (
+            {repositories.topics.slice(0, 5).map((topic: string) => (
               <Badge key={topic} variant="outline">
                 {topic}
               </Badge>

@@ -3,6 +3,8 @@
 import React from "react"
 import Image from "next/image"
 import { AspectRatio } from "@/components/ui/aspect-ratio"
+import { TypographyP } from "../typography"
+import avatar from "../../app/avatar.jpeg"
 
 const Hero = () => {
   return (
@@ -12,16 +14,16 @@ const Hero = () => {
           <h1 className="text-pretty bg-gradient-stop mt-2 scroll-m-20 bg-gradient-to-br from-foreground via-foreground via-30% to-foreground/30 bg-clip-text font-heading text-4xl font-extrabold tracking-tighter text-transparent md:text-5xl">
             hey, I&apos;m benjo 👋
           </h1>
-          <p className="mt-2 text-sm text-foreground/80 md:text-base">
+          <TypographyP className="mt-2 text-sm text-foreground/90 md:text-[15px]">
             I am Frontend developer that specializes at frontend integration,
             recently found myself studying backend apis and UX/UI Design too.
-          </p>
+          </TypographyP>
         </div>
         <div className="relative w-full">
           <div className="relative h-[125px] w-[125px] rounded-md p-1 shadow-md">
             <AspectRatio className="relative rounded-md bg-muted">
               <Image
-                src="https://avatars.githubusercontent.com/u/82529126?v=4"
+                src={avatar}
                 alt="Benjo Quilario"
                 fill
                 style={{ objectFit: "cover" }}

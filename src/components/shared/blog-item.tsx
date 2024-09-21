@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { Calendar, Clock } from "lucide-react"
 import React from "react"
-import { TypographyH3 } from "../typography"
+import { TypographyH3, TypographyP } from "../typography"
 import type { Blog } from "contentlayer/generated"
 import { relativeDate } from "@/lib/date"
 
@@ -19,12 +19,12 @@ const BlogItem: React.FC<BlogItemProps> = ({ blog }) => {
         className="flex rounded-sm p-4 transition-colors hover:bg-accent"
       >
         <article className="flex flex-col gap-2 rounded-sm">
-          <TypographyH3 className="line-clamp-2 text-lg">
+          <TypographyH3 className="line-clamp-2 text-base font-bold md:text-lg">
             {blog.title}
           </TypographyH3>
-          <span className="mt-2 line-clamp-3 text-sm text-foreground/80 md:text-base">
+          <TypographyP className="mt-2 line-clamp-3 text-sm leading-7 text-foreground/80 md:text-base">
             {blog.description}
-          </span>
+          </TypographyP>
           <div className="flex flex-wrap items-stretch justify-start gap-3">
             <div className="flex shrink-0 items-center gap-2">
               <Calendar className="h-4 w-4" aria-hidden />

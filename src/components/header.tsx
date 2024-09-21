@@ -57,7 +57,7 @@ const Header = () => {
       <div className="mx-0 flex w-full max-w-5xl flex-col items-start justify-between">
         <Link href="/" className="block" aria-label="BenJo Quilario">
           <div className="relative">
-            <span className="text-pretty bg-gradient-stop bg-gradient-to-br from-foreground via-foreground via-30% to-foreground/30 bg-clip-text font-heading text-5xl font-extrabold uppercase">
+            <span className="text-pretty bg-gradient-stop font-heading bg-gradient-to-br from-foreground via-foreground via-30% to-foreground/30 bg-clip-text text-5xl font-extrabold uppercase">
               B.
             </span>
           </div>
@@ -74,7 +74,7 @@ const Header = () => {
                       className={buttonVariants({
                         variant: "linkHover",
                         size: "sm",
-                        className: `h-8 px-1 text-xs font-medium lowercase md:px-2 md:text-sm ${
+                        className: `h-8 px-1 text-sm font-medium lowercase md:px-2 ${
                           item.href.startsWith(`/${segment}`)
                             ? "font-medium text-foreground hover:text-foreground"
                             : "font-normal text-foreground/60 hover:text-foreground/80"
