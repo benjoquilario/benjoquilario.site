@@ -8,7 +8,39 @@ export const REPOS = [
   "chatty",
   "blogfolio",
   "just-work",
+  "marino-clothing",
+]
+
+export const REPOS_URL = [
+  ...REPOS,
+  "anitaku-api",
   "amabank-landing-page",
+  "next-movies",
+  "crud-invoice-app",
+]
+
+export const qa = [
+  {
+    question: "Where are you currently studying?",
+    answer:
+      "I'm currently studying Bachelor of Science in Information Technology at AMA University - Quezon City.",
+  },
+  {
+    question: "Have you worked on any projects?",
+    answer:
+      "Yes, in addition to my personal projects and hobbies, I have worked on several projects, both individually and in teams.",
+  },
+  {
+    question: "Can we recruit you?",
+    answer:
+      "Yes, in addition to my personal projects and hobbies, I have worked on several projects, both individually and in teams.",
+  },
+  {
+    question:
+      "How do you stay updated with the latest developments in your field?",
+    answer:
+      "I read articles, watch videos, follow industry leaders and participate in online courses ",
+  },
 ]
 
 export const SocialLinks = [

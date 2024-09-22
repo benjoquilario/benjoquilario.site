@@ -24,6 +24,10 @@ export const navList = [
     title: "Contact",
   },
   {
+    href: "/projects",
+    title: "Projects",
+  },
+  {
     href: "/guestbook",
     title: "Guestbook",
   },
@@ -57,7 +61,7 @@ const Header = () => {
       <div className="mx-0 flex w-full max-w-5xl flex-col items-start justify-between">
         <Link href="/" className="block" aria-label="BenJo Quilario">
           <div className="relative">
-            <span className="text-pretty bg-gradient-stop font-heading bg-gradient-to-br from-foreground via-foreground via-30% to-foreground/30 bg-clip-text text-5xl font-extrabold uppercase">
+            <span className="bg-gradient-stop text-pretty bg-gradient-to-br from-foreground via-foreground via-30% to-foreground/30 bg-clip-text font-heading text-5xl font-extrabold uppercase">
               B.
             </span>
           </div>
@@ -66,15 +70,16 @@ const Header = () => {
           <nav aria-label="primary">
             {/* <button className="md:hidden absolute top-7 right-6 flex flex-col justify-center items-center bg-transition z-[999]"></button> */}
             <div className="relative">
-              <ul className="flex items-center space-x-2">
+              <ul className="flex items-center space-x-3">
                 {navList.map((item) => (
                   <li key={item.href}>
                     <Link
+                      style={{ padding: "0" }}
                       href={item.href}
                       className={buttonVariants({
                         variant: "linkHover",
                         size: "sm",
-                        className: `h-8 px-1 text-sm font-medium lowercase md:px-2 ${
+                        className: `h-8 p-0 text-sm font-medium lowercase ${
                           item.href.startsWith(`/${segment}`)
                             ? "font-medium text-foreground hover:text-foreground"
                             : "font-normal text-foreground/60 hover:text-foreground/80"

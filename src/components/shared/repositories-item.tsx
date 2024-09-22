@@ -86,8 +86,8 @@ export default async function RepositoriesItem({
       <span className="absolute right-0 top-0 z-50 flex h-8 w-8 -translate-y-1/4 items-center justify-center rounded-full opacity-0 transition-all group-hover:-translate-y-1/3 group-hover:opacity-100">
         <a
           target="_blank"
-          href={repositories.html_url}
-          aria-label={repositories.html_url}
+          href={repositories.html_url ?? repositories.homepage}
+          aria-label={repositories.html_url ?? repositories.homepage}
           className="h-8 rounded-full bg-foreground p-2 text-primary-foreground"
         >
           <ExternalLink className="h-4 w-4" />
