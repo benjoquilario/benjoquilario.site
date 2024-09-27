@@ -1,15 +1,9 @@
 "use client"
-import type { Metadata } from "next"
 import * as React from "react"
-import {
-  TypographyH2,
-  TypographyH3,
-  TypographyP,
-} from "@/components/typography"
+import { TypographyH3, TypographyP } from "@/components/typography"
 import Tech from "@/components/tech"
 import SkillSetModal from "@/components/skill-set-modal"
 import useClickOutside from "@/hooks/useClickOutside"
-import { buttonVariants } from "@/components/ui/button"
 import Image from "next/image"
 
 const About = () => {
@@ -38,6 +32,9 @@ const About = () => {
 
   useClickOutside(ref, () => setIsOpen(false))
 
+  const codedesign =
+    "relative rounded border px-[0.3rem] py-[0.2rem] font-mono text-sm"
+
   return (
     <React.Fragment>
       <SkillSetModal isOpen={isOpen} setIsOpen={setIsOpen} ref={ref} />
@@ -59,6 +56,20 @@ const About = () => {
               development to create the best possible user experience, recently
               found myself studying backend apis and UX/UI Design too.
             </TypographyP>
+
+            <TypographyP className="text-sm leading-7 text-foreground/90 md:text-[15px]">
+              I'm currently learning{" "}
+              <span className={codedesign}>react-native</span>,{" "}
+              <span className={codedesign}>
+                {" "}
+                data structures & algorithms with JavaScript
+              </span>
+              and{" "}
+              <span className={codedesign}>
+                path of becoming a fullstack web developer.
+              </span>
+            </TypographyP>
+
             <TypographyP className="text-sm leading-7 text-foreground/90 md:text-[15px]">
               Since technology never stops growing. I am always looking for ways
               to improve my skills and stay up-to-date with the latest
@@ -75,7 +86,7 @@ const About = () => {
                 I drink a lot during parties/celebrations and I like getting
                 wasted.
               </li>
-              <li>Gym/Working Out</li>
+              <li>Working Out</li>
             </ul>
             <TypographyP className="text-sm leading-7 text-foreground/90 md:text-[15px]">
               If you happen to be in the same city I reside in (Novaliches,
@@ -84,8 +95,7 @@ const About = () => {
             <ul className="my-6 ml-6 list-disc [&>li]:mt-2">
               <li>Share a coffee</li>
               <li>Discuss coding</li>
-              <li>Workout/Gym Together</li>
-              <li>Watch Anime/Movies with me</li>
+              <li>Play chess</li>
             </ul>
             <TypographyP>
               I am comfortable working independently or as part of a team, and I

@@ -10,9 +10,9 @@ import {
   SiNextdotjs,
   SiNodedotjs,
   SiTailwindcss,
+  SiPostgresql,
 } from "react-icons/si"
 import { ExternalLink } from "lucide-react"
-import { Button } from "@/components/ui/button"
 import { Badge } from "./ui/badge"
 
 const techIcon = [
@@ -47,6 +47,10 @@ const techIcon = [
   {
     techName: "Tailwind",
     icon: SiTailwindcss,
+  },
+  {
+    techName: "PostgreSQL",
+    icon: SiPostgresql,
   },
 ]
 

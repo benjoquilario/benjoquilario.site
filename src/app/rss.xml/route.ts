@@ -6,10 +6,8 @@ function convertToContentEncoded(input: string): string {
   const contentEncoded = input.replace(/\n/g, "<br/>")
 
   // Enclose the content in CDATA section
-  const wrappedContent = `<![CDATA[${contentEncoded}]]>`
-
   // Construct the complete content:encoded element
-  return wrappedContent
+  return `<![CDATA[${contentEncoded}]]>`
 }
 
 function generateRSS() {
