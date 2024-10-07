@@ -9,6 +9,7 @@ import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { siteConfig } from "@/config/site"
 import Footer from "@/components/site-footer"
 import { Toaster } from "@/components/ui/toaster"
+import GridPattern from "@/components/ui/grid-pattern"
 
 const fontLogo = Oswald({
   subsets: ["latin"],
@@ -32,12 +33,14 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   keywords: [
-    "Benjo Quilario",
-    "Benjo",
+    "benjo quilario",
+    "benjo",
     "benjoquilario",
     "about",
-    "contact",
+    "contact benjoquilario",
+    "benjoquilario blog's",
     "blog",
+    "quilario",
   ],
   authors: {
     name: siteConfig.username,

@@ -58,7 +58,12 @@ const ContactForm = () => {
   async function handleOnSubmit(data: ContactForm) {
     const { emailAddress, message, messageBy } = data
 
-    const response = await sendEmail({ emailAddress, body: message, messageBy })
+    const response = await sendEmail({
+      emailAddress,
+      body: message,
+      messageBy,
+      action: "contact",
+    })
 
     if (!response.ok) return toast({ title: response.data })
 

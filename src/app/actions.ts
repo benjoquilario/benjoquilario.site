@@ -34,9 +34,15 @@ interface ISendEmail {
   emailAddress: string
   body: string
   messageBy: string
+  action: string
 }
 
-export async function sendEmail({ emailAddress, body, messageBy }: ISendEmail) {
+export async function sendEmail({
+  emailAddress,
+  body,
+  messageBy,
+  action,
+}: ISendEmail) {
   const ratelimit = new Ratelimit({
     redis: kv,
     limiter: Ratelimit.fixedWindow(2, "1 m"),
@@ -54,7 +60,7 @@ export async function sendEmail({ emailAddress, body, messageBy }: ISendEmail) {
 
   if (process.env.NODE_ENV === "production")
     await sendMail({
-      from: "guestbook@benjoquilario.site",
+      from: `${action}@benjoquilario.site`,
       to: "benjoquilario@gmail.com",
       subject: `${messageBy} message you!`,
       html: `<p>Email: ${emailAddress}</p><p>Message: ${body}</p>`,
