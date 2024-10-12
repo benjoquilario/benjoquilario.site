@@ -156,5 +156,5 @@ interface MdxProps {
 export function Mdx({ code }: MdxProps) {
   const MDXContent = useMDXComponent(code)
 
-  return <MDXContent components={components} />
+  return <MDXContent components={components as any} />
 }

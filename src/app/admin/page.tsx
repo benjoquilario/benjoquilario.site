@@ -18,7 +18,7 @@ const Admin = async () => {
   })
 
   return <div className="space-y-4">
-    {guestbookEntries.map((entry) => (
+    {guestbookEntries.map((entry: any) => (
       <div
         key={entry.id}
         className="flex w-full justify-between break-words text-sm hover:bg-muted"

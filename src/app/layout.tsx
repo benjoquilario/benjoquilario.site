@@ -10,7 +10,6 @@ import { siteConfig } from "@/config/site"
 import Footer from "@/components/site-footer"
 import { Toaster } from "@/components/ui/toaster"
 import { Analytics } from '@vercel/analytics/react';
-import { ViewTransitions } from 'next-view-transitions'
 
 const fontLogo = Oswald({
   subsets: ["latin"],
@@ -71,23 +70,21 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <ViewTransitions>
-      <html lang="en" suppressHydrationWarning>
-        <body
-          className={`${fontSans.variable} ${fontLogo.variable} min-h-screen font-sans antialiased`}
-        >
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <div className="mx-auto max-w-3xl p-4">
-              <Header />
-              <main>{children}</main>
-              <Footer />
-            </div>
-            <Toaster />
-            <TailwindIndicator />
-            <Analytics />
-          </ThemeProvider>
-        </body>
-      </html>
-    </ViewTransitions>
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`${fontSans.variable} ${fontLogo.variable} min-h-screen font-sans antialiased`}
+      >
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <div className="mx-auto max-w-3xl p-4">
+            <Header />
+            <main>{children}</main>
+            <Footer />
+          </div>
+          <Toaster />
+          <TailwindIndicator />
+          <Analytics />
+        </ThemeProvider>
+      </body>
+    </html>
   )
 }

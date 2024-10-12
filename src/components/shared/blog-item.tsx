@@ -5,7 +5,7 @@ import React from "react"
 import { TypographyH3, TypographyP } from "../typography"
 import type { Blog } from "contentlayer/generated"
 import { relativeDate } from "@/lib/date"
-import { Link } from 'next-view-transitions'
+import Link from "next/link"
 
 type BlogItemProps = {
   blog: Blog

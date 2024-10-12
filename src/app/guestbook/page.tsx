@@ -6,7 +6,6 @@ import { SignIn, SignOut } from "./buttons"
 import { getSession } from "@/lib/session"
 import FormEntry from "./form"
 import { lowerCaseName } from "@/lib/utils"
-import { type BookEntry } from "@prisma/client"
 export const metadata: Metadata = {
   title: "Guestbook",
   description: "Sign my guestbook and leave your mark.",
@@ -60,7 +59,7 @@ const Entries = async () => {
     <div>
       <div className="mt-5 flex flex-col space-y-1">
         {!entries && <>Nothing, try sending one...</>}
-        {entries?.map((entry) => (
+        {entries?.map((entry: any) => (
           <div className="w-full break-words" key={entry.id}>
             <span className="mr-1 text-muted-foreground">
               {lowerCaseName(entry.created_by)}:

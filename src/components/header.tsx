@@ -7,8 +7,8 @@ import { cn } from "@/lib/utils"
 import ThemeToggle from "@/components/theme-toggle"
 import { Toggle } from "@/components/ui/toggle"
 import { useSelectedLayoutSegment } from "next/navigation"
-import { Link } from 'next-view-transitions'
 import { buttonVariants } from "./ui/button"
+import Link from "next/link"
 
 export const navList = [
   {
@@ -80,8 +80,8 @@ const Header = () => {
                         variant: "linkHover",
                         size: "sm",
                         className: `h-8 p-0 text-sm font-medium lowercase ${item.href.startsWith(`/${segment}`)
-                            ? "font-medium text-foreground hover:text-foreground"
-                            : "font-normal text-foreground/60 hover:text-foreground/80"
+                          ? "font-medium text-foreground hover:text-foreground"
+                          : "font-normal text-foreground/60 hover:text-foreground/80"
                           }`,
                       })}
                     >
