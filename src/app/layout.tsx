@@ -9,7 +9,8 @@ import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { siteConfig } from "@/config/site"
 import Footer from "@/components/site-footer"
 import { Toaster } from "@/components/ui/toaster"
-import GridPattern from "@/components/ui/grid-pattern"
+import { Analytics } from '@vercel/analytics/react';
+import { ViewTransitions } from 'next-view-transitions'
 
 const fontLogo = Oswald({
   subsets: ["latin"],
@@ -27,25 +28,26 @@ export const metadata: Metadata = {
     default: siteConfig.name,
     template: `%s - ${siteConfig.name}`,
   },
-  metadataBase: new URL(siteConfig.url),
   alternates: {
-    canonical: siteConfig.url,
+    canonical: '/',
   },
+  metadataBase: new URL("https://benjoquilario.site"),
   description: siteConfig.description,
-  keywords: [
-    "benjo quilario",
-    "benjo",
-    "benjoquilario",
-    "about",
-    "contact benjoquilario",
-    "benjoquilario blog's",
-    "blog",
-    "quilario",
-  ],
   authors: {
     name: siteConfig.username,
   },
   creator: siteConfig.username,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -57,8 +59,6 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: siteConfig.username,
-    description: siteConfig.description,
-    images: [`${siteConfig.url}og.jpg`],
   },
   icons: {
     icon: "/favicon.ico",
@@ -71,21 +71,23 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${fontSans.variable} ${fontLogo.variable} min-h-screen font-sans antialiased`}
-      >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <div className="mx-auto max-w-3xl p-4">
-            <Header />
-            <main>{children}</main>
-            <Footer />
-          </div>
-          <Toaster />
-          <TailwindIndicator />
-          {/* <Analytics /> */}
-        </ThemeProvider>
-      </body>
-    </html>
+    <ViewTransitions>
+      <html lang="en" suppressHydrationWarning>
+        <body
+          className={`${fontSans.variable} ${fontLogo.variable} min-h-screen font-sans antialiased`}
+        >
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <div className="mx-auto max-w-3xl p-4">
+              <Header />
+              <main>{children}</main>
+              <Footer />
+            </div>
+            <Toaster />
+            <TailwindIndicator />
+            <Analytics />
+          </ThemeProvider>
+        </body>
+      </html>
+    </ViewTransitions>
   )
 }

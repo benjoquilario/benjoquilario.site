@@ -1,11 +1,11 @@
 "use client"
 
-import Link from "next/link"
 import { Calendar, Clock } from "lucide-react"
 import React from "react"
 import { TypographyH3, TypographyP } from "../typography"
 import type { Blog } from "contentlayer/generated"
 import { relativeDate } from "@/lib/date"
+import { Link } from 'next-view-transitions'
 
 type BlogItemProps = {
   blog: Blog
