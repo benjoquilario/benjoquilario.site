@@ -1,12 +1,11 @@
 import { Metadata } from "next"
 import db from "@/lib/db"
 import { TypographyH2 } from "@/components/typography"
-import React from "react"
+import React, { Suspense } from "react"
 import { SignIn, SignOut } from "./buttons"
 import { getSession } from "@/lib/session"
 import FormEntry from "./form"
 import { lowerCaseName } from "@/lib/utils"
-
 export const metadata: Metadata = {
   title: "Guestbook",
   description: "Sign my guestbook and leave your mark.",
@@ -31,13 +30,13 @@ async function getGuestBook() {
 
 export default async function GuestBook() {
   const session = await getSession()
-  const entries = await getGuestBook()
 
   return (
     <div className="space-y-4">
       <TypographyH2 className="mb-8 text-3xl font-bold tracking-tighter">
         <span className="text-4xl">S</span>ign my guestbook
       </TypographyH2>
+
       {session?.user ? (
         <>
           <FormEntry />
@@ -46,10 +45,21 @@ export default async function GuestBook() {
       ) : (
         <SignIn />
       )}
+      <Suspense fallback={<div>Loading...</div>}>
+        <Entries />
+      </Suspense>
+    </div>
+  )
+}
 
+const Entries = async () => {
+  const entries = await getGuestBook()
+
+  return (
+    <div>
       <div className="mt-5 flex flex-col space-y-1">
         {!entries && <>Nothing, try sending one...</>}
-        {entries?.map((entry) => (
+        {entries?.map((entry: any) => (
           <div className="w-full break-words" key={entry.id}>
             <span className="mr-1 text-muted-foreground">
               {lowerCaseName(entry.created_by)}:

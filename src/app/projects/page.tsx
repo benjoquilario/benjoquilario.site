@@ -3,6 +3,7 @@ import { TypographyH2 } from "@/components/typography"
 import RepositoriesItem from "@/components/shared/repositories-item"
 import { REPOS_URL } from "@/config/config"
 import Image from "next/image"
+import { Suspense } from "react"
 
 const Projects = () => {
   return (
@@ -32,7 +33,9 @@ const Projects = () => {
       </div>
       <ul className="mx-0 mt-3 grid w-full grid-cols-1 gap-2.5 md:-mx-4">
         {REPOS_URL.map((repo) => (
-          <RepositoriesItem key={repo} repoName={repo} />
+          <Suspense key={repo}>
+            <RepositoriesItem key={repo} repoName={repo} />
+          </Suspense>
         ))}
       </ul>
     </div>

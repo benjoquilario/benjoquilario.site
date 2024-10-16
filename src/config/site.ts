@@ -2,7 +2,7 @@ import { SiteConfig } from "@/types"
 
 export const siteConfig: SiteConfig = {
   name: "Benjo M. Quilario",
-  description: "22 y/o Frontend Developer base in Philippines",
+  description: "23 y/o Frontend Developer based in Philippines",
   username: "benjoquilario",
   email: "benjoquilario@gmail.com",
   url: "https://benjoquilario.site",
