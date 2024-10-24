@@ -4,9 +4,9 @@ import * as React from "react"
 import { navList as lists } from "@/components/header"
 import { SocialLinks as socialLinks } from "@/config/config"
 import { siteConfig } from "@/config/site"
-import Link from "next/link"
 import { TypographyH3 } from "./typography"
 import { buttonVariants } from "./ui/button"
+import Link from "next/link"
 
 const Footer = () => {
   return (

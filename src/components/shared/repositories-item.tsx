@@ -1,9 +1,7 @@
-import Link from "next/link"
 import { Book, GitFork, Star, GithubIcon, ExternalLink } from "lucide-react"
 import React from "react"
 import { Badge } from "@/components/ui/badge"
 import {
-  TypographyH2,
   TypographyH3,
   TypographyP,
 } from "@/components/typography"
