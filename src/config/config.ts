@@ -33,7 +33,7 @@ export const qa = [
   {
     question: "Can we recruit you?",
     answer:
-      "Yes, in addition to my personal projects and hobbies, I have worked on several projects, both individually and in teams.",
+      "Yes, I am open to new opportunities and challenges. Please feel free to contact me.",
   },
   {
     question:
